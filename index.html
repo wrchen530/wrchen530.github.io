@@ -25,12 +25,12 @@
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr style="padding:0px">
-                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                <td style="padding:2.5%;width:70%;vertical-align:middle">
                   <p style="text-align:center">
                     <name>Weirong Chen</name>
                   </p>
                   <p align="justify">
-                    Hi, I am a first-year PhD student at <a href="https://www.tum.de/en/">Technical University of Munich</a> and <a href="https://www.ox.ac.uk/">University of Oxford</a> under <a href="https://ellis.eu/phd-postdoc">ELLIS</a>,
+                    Hi! I am a second-year PhD student at <a href="https://www.tum.de/en/">Technical University of Munich</a> and <a href="https://www.ox.ac.uk/">University of Oxford</a> under <a href="https://ellis.eu/phd-postdoc">ELLIS</a>,
                     supervised by Prof. <a href="https://cvg.cit.tum.de/members/cremers">Daniel Cremers</a> and Prof. <a href="https://www.robots.ox.ac.uk/~vedaldi/">Andrea Vedaldi</a>.
                   </p>
                   <p align="justify">
@@ -111,7 +111,52 @@
             <tbody>
 
               <!-- 2.3 Ref-NPR -->
-              
+              <tr class="single_element" style="width:70%">
+                <td style="padding:20px;width:35%;vertical-align:middle;text-align:middle" onmouseout="dynsup_stop()" onmouseover="dynsup_start()">
+                  <div class="one" style="display: inline;">
+                    <div class="two" id="dynsup_image" style="display: inline;">
+                      <img src="images/dynsup_anime.gif" alt="Results 2 for twoviewsfm" width="320" width="100%" vertical-align="middle">
+                    </div>
+                    <img src="images/dynsup_static.png" alt="Results 1 for twoviewsfm" width="320" width="100%" vertical-align="middle">
+                  </div>
+                  <script type="text/javascript">
+                    function dynsup_start() {
+                      document.getElementById('dynsup_image').style.opacity = "1";
+                    }
+
+                    function dynsup_stop() {
+                      document.getElementById('dynsup_image').style.opacity = "0";
+                    }
+                    refnpr_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:65%;vertical-align:middle">
+                  <a href="">
+                  <papertitle>DynSUP: Dynamic Gaussian Splatting from An Unposed Image Pair
+                  </papertitle>
+                </a>
+                  <br>
+                  <a href="https://colin-de.github.io/">Weihang Li*</a>,
+                  <strong>Weirong Chen*</strong>,
+                  <a href="https://shenhanqian.github.io/">Shenhan Qian</a>,
+                  Jiajie Chen,
+                  <a href="https://cvg.cit.tum.de/members/cremers">Daniel Cremers</a>,
+                  <a href="https://sites.google.com/view/haoangli/homepage">Haoang Li</a>
+                  <br>
+                  <p></p>
+                  <em>Preprint</em>, 2024
+                  <br>
+                  <a href="https://arxiv.org/abs/2412.00851">arXiv</a>
+                  /
+                  <a href="https://colin-de.github.io/DynSUP/">Project Page</a>
+                  <p></p>
+                  <p align="justify">
+                    Dynamic radiance field reconstruction from only two images, enabled by object-level bundle adjustment.
+                  </p>
+                </td>
+              </tr>
+
+
               <tr class="single_element" style="width:70%">
                 <td style="padding:20px;width:35%;vertical-align:middle;text-align:middle" onmouseout="leapvo_stop()" onmouseover="leapvo_start()">
                   <div class="one" style="display: inline;">
@@ -242,7 +287,7 @@
                   <a href="https://www.yf.io/">Fisher Yu</a>
                   <br>
                   <p></p>
-                  <em>International Conference on Intelligent Robots and Systems (<strong>IROS</strong>)</em>, 2023 <font color="red"><strong>(Oral)</strong></font>
+                  <em>International Conference on Intelligent Robots and Systems (<strong>IROS</strong>)</em>, 2023
                   <br>
                   <em>IEEE Robotics and Automation Letters (<strong>RA-L</strong>)</em>, 2023
                   <br>
@@ -296,8 +341,6 @@
                   <a href="https://yanxp.github.io/">Xiaopeng Yan</a>,
                   <a href="https://openreview.net/profile?id=~Huabin_Zheng1">Huabin Zheng</a>,
                   <a href="http://www.statfe.com/">Wayne Zhang</a>
-                  <br>
-                  (* equal contribution)
                   <p></p>
                   <em>ACM International Conference on Multimedia (<strong>ACM MM</strong>)</em>, 2020 <font color="red"><strong>(Oral)</strong></font>
                   <!-- (* equal contribution) -->
@@ -596,7 +639,7 @@
           </table>
           <ul> 
             <li>
-               <strong>Conference Reviewer</strong>: CVPR
+               <strong>Conference Reviewer</strong>: CVPR, ECCV, ICRA
             </li>
           </ul>
           <!-- <table style="border-spacing:10px 0px;">
@@ -636,7 +679,7 @@
                   </center>
                   <br>
                   <p style="text-align:right;font-size:small;">
-                    Last updated: June 2024
+                    Last updated: November 2024
                     <br>
                     Web page design credit to <a href="https://jonbarron.info" style="font-size: 14px">Jon Barron</a> and <a href="https://julianjuaner.github.io/" style="font-size: 14px">Yuechen Zhang</a>
                     <br>
