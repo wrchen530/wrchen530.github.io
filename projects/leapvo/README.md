@@ -1,6 +1,6 @@
 # LEAP-VO: Long-term Effective Any Point Tracking for Visual Odometry
 
-This repository contains source code for the [LEAP-VO website](https://chiaki530.github.io/projects/leapvo).
+This repository contains source code for the [LEAP-VO website](https://wrchen530.github.io/projects/leapvo).
 
 If you find our work useful please cite:
 
