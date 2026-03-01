@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Non-pixel-aligned Visual Transformer for Amodal 3D Reconstruction">
+  <meta name="keywords" content="NOVA3R, visual transformer, 3D reconstruction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NOVA3R: Non-pixel-aligned Visual Transformer for Amodal 3D Reconstruction</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script> -->
+
+  <style>
+    /* Apple-style title typography */
+    .publication-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.015em !important;
+      line-height: 1.15 !important;
+    }
+    
+    .title-gradient {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.02em !important;
+    }
+    
+    /* Other styles */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 明确指定4列布局 */
+      gap: 10px;
+      padding: 0;
+    }
+
+    .obj1, .obj2, .obj3, .obj4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero hero--nova">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- Logo -->
+          <div class="logo-container" style="margin-bottom: 20px;">
+            <img src="./static/images/nova3r_logo_v1.png" alt="NOVA3R Logo" style="width: 200px; height: auto; margin: 0 auto; display: block;">
+          </div>
+          <h1 class="title is-1 publication-title"><span class="title-gradient">NOVA3R</span>: Non-pixel-aligned Visual Transformer for Amodal 3D Reconstruction</h1>
+          <div class="cvpr2024" style="margin-top: 10px; margin-bottom: 20px;">
+            <h2 class="is-size-3">ICLR 2026</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://wrchen530.github.io/">Weirong Chen</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://physicalvision.github.io/people/~chuanxia">Chuanxia Zheng</a><sup>3,4,&dagger;
+</sup>,</span>
+            <span class="author-block">
+              <a href="https://ganlinzhang.xyz/">Ganlin Zhang</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.robots.ox.ac.uk/~vedaldi/"> Andrea Vedaldi</a><sup>3</sup>,
+            </span>     
+            <span class="author-block">
+              <a href="https://cvg.cit.tum.de/members/cremers"> Daniel Cremers</a><sup>1,2</sup>
+            </span>           
+          </div>
+          
+
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>TU Munich</span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Munich Center for Machine Learning</span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>3</sup>University of Oxford</span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>4</sup>NTU</span>
+          </div>
+
+          
+            <div class="is-size-5 publication-authors" style="margin-top: 20px;">
+            <span class="author-block"></span><sup>&dagger;</sup>Project Lead</span>
+            </div>
+          
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openreview.net/forum?id=c0QRZMKwSb"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2401.01887"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Supp Link. -->
+              <!-- <span class="link-block">
+                <a href="static/pdfs/supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supp</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                class="external-link button is-normal is-rounded is-dark disabled">
+               <span class="icon">
+                   <i class="fab fa-github"></i>
+               </span>
+               <span>Code (Coming Soon)</span>
+               </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=qtGsROYwdm4"
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="static/files/CVPR24_poster_leapvo_final.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Poster</span>
+                  </a>
+              </span> -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser teaser--nova">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline controls width="100%">
+        <source src="./static/images/nova3r_demo.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <strong>TL;DR:</strong> Given unposed multi-view images, <strong>NOVA3R</strong> recovers complete, non-overlapping 3D geometry, reconstructing visible and occluded regions with physical plausibility.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section section--paper">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+
+            <!-- <div style="text-align: center; margin: 20px 0;">
+              <img src="./static/images/teaser.png"
+                    class="teaser-fig"
+                    width="100%"
+                    alt="teaser-fig."/>
+            </div> -->
+
+          <p>
+            We present NOVA3R,
+            an effective approach for non-pixel-aligned 3D reconstruction from a set of unposed images,
+            in a feed-forward manner.
+            Unlike pixel-aligned methods that tie geometry to per-ray predictions,
+            our formulation learns a global, view-agnostic scene representation that decouples reconstruction from pixel alignment.
+            This addresses two key limitations in pixel-aligned 3D:
+            (1) it recovers both visible and invisible points with a complete scene representation,
+            and (2) it produces physically plausible geometry with fewer duplicated structures in overlapping regions.
+            To achieve this, we introduce a scene-token mechanism that aggregates information across unposed images and a diffusion-based 3D decoder that reconstructs complete, non–pixel-aligned point clouds.
+            Extensive experiments on both scene-level and object-level datasets demonstrate that NOVA3R outperforms state-of-the-art methods in terms of reconstruction accuracy and completeness.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+<!-- <div align="center" style="margin-top:80px;" style="margin-bottom:120px;">
+<img style='height: auto; width: 75%; object-fit: contain' src="static/images/overview.png" alt="overview_image">
+</div>  -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/qtGsROYwdm4"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section section--examples" id="Results">
+  <div class="container is-max-desktop content">
+        <div  class="columns is-centered has-text-centered">
+          <h2 class="subtitle has-text-centered">
+            Examples
+          </h2>
+  </div>
+  <div class="columns is-centered has-text-centered" style="margin-top: 0.75rem;">
+    <p>Compared with pixel-aligned reconstruction models like VGGT, <strong>NOVA3R</strong> can reconstruct both visible and occluded regions. </p>
+  </div>
+  </div>
+  <br>
+
+  <div class="hero-body is-centered examples-panel" style="width: 1024px; margin: 0 auto; padding: 20px; border-radius: 10px; background-color: #f2f2f5bb;">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  
+  <!-- Reset button and Sync toggle -->
+  <div style="text-align: center; margin-bottom: 30px;">
+    <button id="resetAllPosesBtn" class="button is-info is-small" style="margin-right: 15px;">
+      <span class="icon is-small">
+        <i class="fas fa-redo"></i>
+      </span>
+      <span>Reset All Views</span>
+    </button>
+    <button id="toggleSyncBtn" class="button is-success is-small" style="margin-left: 15px;">
+      <span class="icon is-small">
+        <i class="fas fa-link"></i>
+      </span>
+      <span>Sync Views: ON</span>
+    </button>
+  </div>
+  
+  <div class="columns is-centered">
+    <div class="column">
+      <div class="content">
+        <h2 class="title is-6 has-text-centered">Input image</h2>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <h2 class="title is-6 has-text-centered">VGGT</h2>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <h2 class="title is-6 has-text-centered">LaRI</h2>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <h2 class="title is-6 has-text-centered">NOVA3R</h2>
+      </div>
+    </div>
+  </div>    
+  <div class="full_label scene1">
+    <div class="grid-container">
+      <div class="obj1">
+        <img src="./glb/img/00003_scene01_scene01_full_00_60_rgb.jpg" height="196" width="196" alt="Input Image">
+      </div>
+      <div class="obj2">
+        <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/vggt/00003_scene01_scene01_full_00_60_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+      <div class="obj3">
+        <!-- <img src="./static/images/trellis/c3_input.png" height="196" width="196" alt="Input Image"> -->
+          <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/lari/00003_scene01_scene01_full_00_60_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+
+      </div>
+      <div class="obj4">
+        <model-viewer style="height: 196px; width: 196px;"
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff"
+                      alt="NOVA3R"
+                      src="./glb/nova3r/00003_scene01_scene01_full_00_60_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="full_label scene1">
+    <div class="grid-container">
+      <div class="obj1">
+        <img src="./glb/img/00122_scene05_scene05_full_00_305_rgb.jpg" height="196" width="196" alt="Input Image">
+      </div>
+      <div class="obj2">
+        <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/vggt/00122_scene05_scene05_full_00_305_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+      <div class="obj3">
+         <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/lari/00122_scene05_scene05_full_00_305_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+      <div class="obj4">
+        <model-viewer style="height: 196px; width: 196px;"
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff"
+                      alt="NOVA3R"
+                      src="./glb/nova3r/00122_scene05_scene05_full_00_305_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+    </div>
+  </div>
+  <br>
+    <div class="full_label scene1">
+    <div class="grid-container">
+      <div class="obj1">
+        <img src="./glb/img/00258_scene09_scene09_full_00_145_rgb.jpg" height="196" width="196" alt="Input Image">
+      </div>
+      <div class="obj2">
+        <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/vggt/00258_scene09_scene09_full_00_145_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+      <div class="obj3">
+         <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/lari/00258_scene09_scene09_full_00_145_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+      <div class="obj4">
+        <model-viewer style="height: 196px; width: 196px;"
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff"
+                      alt="NOVA3R"
+                      src="./glb/nova3r/00258_scene09_scene09_full_00_145_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="full_label scene1">
+    <div class="grid-container">
+      <div class="obj1">
+        <img src="./glb/img/00403_scene10_scene10_full_00_615_rgb.jpg" height="196" width="196" alt="Input Image">
+      </div>
+      <div class="obj2">
+        <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/vggt/00403_scene10_scene10_full_00_615_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+      <div class="obj3">
+                <model-viewer style="height: 196px; width: 196px;"
+                      environment-image=""
+                      skybox-image=""
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff";
+                      alt="NOVA3R"
+                      src="./glb/lari/00403_scene10_scene10_full_00_615_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+      <div class="obj4">
+        <model-viewer style="height: 196px; width: 196px;"
+                      orientation="0deg 180deg 0deg"
+                      background-color="#ffffff"
+                      alt="NOVA3R"
+                      src="./glb/nova3r/00403_scene10_scene10_full_00_615_pred.glb"
+                      camera-controls
+                      interaction-prompt-threshold="3000"
+                      exposure="1"
+                      shadow-intensity="2"
+                      generate-schema>
+        </model-viewer>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+</section>
+
+
+
+<section class="section section--paper">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Method</h2>
+        <!-- <h3 class="title is-4">LEAP Front-end</h3> -->
+        <div class="content has-text-justified">
+        </div>
+                <div class="content has-text-justified">
+                    <p>
+                      <strong>NOVA3R Pipeline:</strong> <em>Stage 1:</em> Learn latent scene tokens from complete point clouds using a flow-matching autoencoder. <em>Stage 2:</em> Map multi-view images into the same latent space via an image encoder with learnable initial tokens, and train the encoder with frozen decoder weights from stage 1 using flow-matching loss.
+                    </p>
+          </div>
+
+        <img src="./static/images/nova3r_pipeline.jpg"
+                  class="teaser-fig"
+                  width="100%"
+                  alt="teaser-fig."/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Complete Reconstruction</h2>
+        <!-- <h3 class="title is-4">LEAP Front-end</h3> -->
+        <div class="content has-text-justified">
+        </div>
+          <div class="content has-text-justified">
+                    <p>
+                  Given uncalibrated multi-view inputs, NOVA3R learns a global scene representation that integrates cross-view information to recover visible and occluded geometry. The resulting complete 3D reconstruction captures full scene structure and supports downstream tasks including robotics and scene understanding.
+                    </p>
+          </div>
+        <img src="./static/images/scrream_vis_v2.png"
+                  class="teaser-fig"
+                  width="100%"
+                  alt="teaser-fig."/>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Non-overlapping Reconstruction with Even Density</h2>
+        <!-- <h3 class="title is-4">LEAP Front-end</h3> -->
+        <div class="content has-text-justified">
+        </div>
+          <div class="content has-text-justified">
+                    <p>
+                      By using a non-pixel-aligned formulation, NOVA3R learns a globally consistent point distribution, yielding non-overlapping reconstructions with uniform density. Pixel-aligned approaches, in contrast, tend to introduce duplicated and misaligned points in overlapping areas.
+                    </p>
+          </div>
+        <img src="./static/images/nrgbd_density.png"
+                  class="teaser-fig"
+                  width="100%"
+                  alt="teaser-fig."/>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">TRELLIS Integration for Scene Reconstruction</h2>
+        <div class="content has-text-justified">
+          <p>
+            We integrate <strong>NOVA3R</strong> into the <strong>TRELLIS</strong> pipeline by replacing Stage-1 active voxel prediction with NOVA3R's non-pixel-aligned point cloud output. This simple substitution enables a pretrained object-centric TRELLIS model to generalize to scene-level reconstruction, while reusing the unchanged Stage-2 decoder to generate meshes, 3DGS, and radiance fields.
+          </p>
+        </div>
+      </div>
+    </div>
+      <section class="hero is-light is-small trellis-hero">
+        <div class="hero-body">
+          <div class="container">
+            <!-- Toggle buttons for Mesh/Color -->
+            <div style="text-align: center; margin-bottom: 20px;">
+              <button id="trellisMeshBtn" class="button is-info is-small" style="margin-right: 10px;">
+                <span class="icon is-small">
+                  <i class="fas fa-cube"></i>
+                </span>
+                <span>Show Mesh</span>
+              </button>
+              <button id="trellisColorBtn" class="button is-light is-small">
+                <span class="icon is-small">
+                  <i class="fas fa-palette"></i>
+                </span>
+                <span>Show Radiance Field</span>
+              </button>
+            </div>
+            <!-- Fixed column headers -->
+            <div class="row" style="display: flex; justify-content: center; margin-bottom: 0px;">
+              <div style="display: flex; width: 100%; max-width: 900px;">
+                <div class="title is-5" style="flex: 1; text-align: center;">Input</div>
+                <div class="title is-5" style="flex: 1; text-align: center;">TRELLIS</div>
+                <div class="title is-5" style="flex: 1; text-align: center;">NOVA3R + TRELLIS (stage-2)</div>
+              </div>
+            </div>
+            <div class="trellis-carousel carousel">
+              <div class="item">
+                <div class="pipeline">
+                  <div class="row">
+                    <div class="cells">
+                      <figure style="display: flex; align-items: center; justify-content: center; height: 100%;"><img src="./static/trellis/scrream_5/input_image.png"></figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_5/trellis_mesh.gif" alt="TRELLIS mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_5/trellis_rf.gif" alt="TRELLIS color" style="display: none;">
+                      </figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_5/nova3r_mesh.gif" alt="NOVA3R mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_5/nova3r_rf.gif" alt="NOVA3R color" style="display: none;">
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="pipeline">
+                  <div class="row">
+                    <div class="cells">
+                      <figure style="display: flex; align-items: center; justify-content: center; height: 100%;"><img src="./static/trellis/scrream_316/input_image.png"></figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_316/trellis_mesh.gif" alt="TRELLIS mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_316/trellis_rf.gif" alt="TRELLIS color" style="display: none;">
+                      </figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_316/nova3r_mesh.gif" alt="NOVA3R mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_316/nova3r_rf.gif" alt="NOVA3R color" style="display: none;">
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="pipeline">
+                  <div class="row">
+                    <div class="cells">
+                      <figure style="display: flex; align-items: center; justify-content: center; height: 100%;"><img src="./static/trellis/scrream_403/input_image.png"></figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_403/trellis_mesh.gif" alt="TRELLIS mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_403/trellis_rf.gif" alt="TRELLIS color" style="display: none;">
+                      </figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_403/nova3r_mesh.gif" alt="NOVA3R mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_403/nova3r_rf.gif" alt="NOVA3R color" style="display: none;">
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="pipeline">
+                  <div class="row">
+                    <div class="cells">
+                      <figure style="display: flex; align-items: center; justify-content: center; height: 100%;"><img src="./static/trellis/scrream_328/input_image.png"></figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_328/trellis_mesh.gif" alt="TRELLIS mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_328/trellis_rf.gif" alt="TRELLIS color" style="display: none;">
+                      </figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_328/nova3r_mesh.gif" alt="NOVA3R mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_328/nova3r_rf.gif" alt="NOVA3R color" style="display: none;">
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="pipeline">
+                  <div class="row">
+                    <div class="cells">
+                      <figure style="display: flex; align-items: center; justify-content: center; height: 100%;"><img src="./static/trellis/scrream_258/input_image.png"></figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_258/trellis_mesh.gif" alt="TRELLIS mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_258/trellis_rf.gif" alt="TRELLIS color" style="display: none;">
+                      </figure>
+                      <figure>
+                        <img class="mesh-gif" src="./static/trellis/scrream_258/nova3r_mesh.gif" alt="NOVA3R mesh">
+                        <img class="color-gif" src="./static/trellis/scrream_258/nova3r_rf.gif" alt="NOVA3R color" style="display: none;">
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+</div>
+</section>  
+
+<section class="section" id="RelatedWork">
+  <div class="container is-max-desktop">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-3">Related Work</h2>
+        <div class="content has-text-justified">
+          <p>
+            We build on prior advances in multi-view 3D reconstruction, global scene representations, and
+            diffusion-based generative models. NOVA3R complements pixel-aligned methods by learning a
+            view-agnostic scene embedding that supports complete geometry recovery and reduces overlap
+            artifacts. 
+            Here are some related works that inspired our approach:
+            <ul>
+              <li><a href="https://arxiv.org/abs/2412.15618">3D Shape Tokenization via Latent Flow Matching</a> - Chang et al., 2024</li>
+              <li><a href="https://arxiv.org/abs/2504.18424">LaRI: Layered Ray Intersections for Single-view 3D Geometric Reasoning</a> - Li et al., 2025</li>
+              <li><a href="https://arxiv.org/abs/2412.01506">TRELLIS:Structured 3D Latents for Scalable and Versatile 3D Generation</a> - Xiang et al., 2025</li>
+              <li><a href="https://arxiv.org/abs/2502.06608">TripoSG: High-Fidelity 3D Shape Synthesis using Large-Scale Rectified Flow Models</a> - Li et al., 2025</li>
+              <li><a href="https://arxiv.org/abs/2503.13439">Amodal3R: Amodal 3D Reconstruction from Occluded 2D Images</a> - Wu et al., 2025</li>
+              <li><a href="https://arxiv.org/abs/2503.11651">VGGT: Visual Geometry Grounded Transformer</a> - Wang et al., 2025</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{chen2026nova3r,
+      title={NOVA3R: Non-pixel-aligned Visual Transformer for Amodal 3D Reconstruction},
+      author={Chen, Weirong and Zheng, Chuanxia and Zhang, Ganlin and Vedaldi, Andrea and Cremers, Daniel},
+      booktitle={The Fourteenth International Conference on Learning Representations},
+      year={2026}
+    }
+</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div align="center" class="container">
+    <div class="columns is-centered">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is borrowed from <a href="https://github.com/3d-moments/3d-moments.github.io">3D Moments website</a>.
+          </p>
+          </div>
+      </div>
+    </div>
+</footer>
+
+<script>
+  const rowInitialPoses = new Map();
+  let syncEnabled = true;
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Setup TRELLIS mesh/color toggle
+    setupTrellisToggle();
+    
+    // Debug video loading
+    document.querySelectorAll('.trellis-carousel video').forEach((video, index) => {
+      video.addEventListener('loadedmetadata', () => {
+        console.log(`Video ${index} loaded, duration:`, video.duration, 'seconds');
+      });
+      video.addEventListener('error', (e) => {
+        console.error(`Video ${index} error:`, e);
+      });
+    });
+    
+    const checkModelViewerReady = setInterval(() => {
+      if (customElements.get('model-viewer')) {
+        clearInterval(checkModelViewerReady);
+        initCameraSync();
+        setupResetButton();
+        setupSyncToggleButton();
+      }
+    }, 100);
+    
+    function setupTrellisToggle() {
+      const meshBtn = document.getElementById('trellisMeshBtn');
+      const colorBtn = document.getElementById('trellisColorBtn');
+      if (!meshBtn || !colorBtn) {
+        console.log('Toggle buttons not found!');
+        return;
+      }
+      
+      const meshGifs = document.querySelectorAll('.trellis-carousel .mesh-gif');
+      const colorGifs = document.querySelectorAll('.trellis-carousel .color-gif');
+      
+      const showMesh = () => {
+        meshBtn.classList.add('is-info');
+        meshBtn.classList.remove('is-light');
+        colorBtn.classList.add('is-light');
+        colorBtn.classList.remove('is-info');
+        meshGifs.forEach(img => { img.style.display = 'block'; });
+        colorGifs.forEach(img => { img.style.display = 'none'; });
+      };
+      
+      const showColor = () => {
+        colorBtn.classList.add('is-info');
+        colorBtn.classList.remove('is-light');
+        meshBtn.classList.add('is-light');
+        meshBtn.classList.remove('is-info');
+        meshGifs.forEach(img => { img.style.display = 'none'; });
+        colorGifs.forEach(img => { img.style.display = 'block'; });
+      };
+      
+      meshBtn.addEventListener('click', showMesh);
+      colorBtn.addEventListener('click', showColor);
+      
+      // Initialize state
+      showMesh();
+      console.log('Trellis toggle setup complete');
+    }
+    
+    function initCameraSync() {
+      document.querySelectorAll('.full_label').forEach((row, rowIndex) => {
+        const viewers = Array.from(row.querySelectorAll('model-viewer'));
+        if (viewers.length < 3) return;
+        
+        Promise.all(viewers.map(viewer => 
+          new Promise(resolve => viewer.hasAttribute('loaded') 
+            ? resolve() 
+            : viewer.addEventListener('load', resolve, { once: true })
+          )
+        )).then(() => {
+          setTimeout(() => {
+            const initialPoses = viewers.map(viewer => ({
+              cameraTarget: viewer.getCameraTarget(),
+              cameraOrbit: viewer.getCameraOrbit().toString(),
+              fieldOfView: viewer.getFieldOfView()
+            }));
+            
+            rowInitialPoses.set(rowIndex, { viewers, poses: initialPoses });
+            
+            setupSync(viewers);
+          }, 300);
+        });
+      });
+    }
+    
+    function setupResetButton() {
+      const resetBtn = document.getElementById('resetAllPosesBtn');
+      if (!resetBtn) return;
+      
+      resetBtn.addEventListener('click', () => {
+        // First, reset interaction-prompt on ALL model-viewers
+        document.querySelectorAll('model-viewer').forEach(viewer => {
+          viewer.resetInteractionPrompt();
+          viewer.setAttribute('interaction-prompt', 'auto');
+        });
+        
+        // Then reset poses for viewers we have stored
+        rowInitialPoses.forEach(({ viewers, poses }) => {
+          viewers.forEach((viewer, index) => {
+            if (index < poses.length) {
+              try {
+                const pose = poses[index];
+                viewer.cameraTarget = `${pose.cameraTarget.x}m ${pose.cameraTarget.y}m ${pose.cameraTarget.z}m`;
+                viewer.cameraOrbit = pose.cameraOrbit;
+                viewer.fieldOfView = `${pose.fieldOfView}deg`;
+                viewer.jumpCameraToGoal();
+              } catch (e) {
+                console.warn('Failed to reset pose:', e);
+              }
+            }
+          });
+        });
+      });
+    }
+    
+    function setupSyncToggleButton() {
+      const syncBtn = document.getElementById('toggleSyncBtn');
+      if (!syncBtn) return;
+      
+      syncBtn.addEventListener('click', () => {
+        syncEnabled = !syncEnabled;
+        const isOn = syncEnabled;
+        syncBtn.classList.toggle('is-danger');
+        syncBtn.classList.toggle('is-success');
+        syncBtn.querySelector('span:last-child').textContent = `Sync Views: ${isOn ? 'ON' : 'OFF'}`;
+      });
+    }
+    
+    function setupSync(viewers) {
+      let rowSyncing = false;
+      let isInteracting = false;
+      let animationFrameId = null;
+      let lastInteractingViewer = null;
+      let zoomTimeout = null;
+      const viewerLastOrbits = viewers.map(v => v.getCameraOrbit().toString());
+      
+      const applyPoseToViewers = (source) => {
+        const target = source.getCameraTarget();
+        const orbit = source.getCameraOrbit().toString();
+        const fov = `${source.getFieldOfView()}deg`;
+        
+        return { 
+          target: `${target.x}m ${target.y}m ${target.z}m`, 
+          orbit, 
+          fov 
+        };
+      };
+      
+      const syncToViewers = (pose, excludeIndex = -1) => {
+        viewers.forEach((viewer, i) => {
+          if (i === excludeIndex) return;
+          try {
+            viewer.setAttribute('interaction-prompt', 'none');
+            viewer.cameraTarget = pose.target;
+            viewer.cameraOrbit = pose.orbit;
+            viewer.fieldOfView = pose.fov;
+            viewer.jumpCameraToGoal();
+            viewerLastOrbits[i] = pose.orbit;
+          } catch (e) {
+            console.warn('Sync failed:', e);
+          }
+        });
+      };
+      
+      const checkAndSync = () => {
+        viewers.forEach((viewer, i) => {
+          const current = viewer.getCameraOrbit().toString();
+          if (current !== viewerLastOrbits[i]) {
+            lastInteractingViewer = i;
+            viewerLastOrbits[i] = current;
+          }
+        });
+        
+        if (isInteracting) animationFrameId = requestAnimationFrame(checkAndSync);
+      };
+      
+      const finalSync = () => {
+        if (!syncEnabled || lastInteractingViewer === null) return;
+        
+        isInteracting = false;
+        const pose = applyPoseToViewers(viewers[lastInteractingViewer]);
+        syncToViewers(pose);
+      };
+      
+      const setupInteractionListeners = (viewer) => {
+        const startInteraction = () => {
+          isInteracting = true;
+          if (!animationFrameId) animationFrameId = requestAnimationFrame(checkAndSync);
+        };
+        
+        viewer.addEventListener('mousedown', startInteraction);
+        viewer.addEventListener('touchstart', startInteraction);
+        
+        viewer.addEventListener('mouseup', () => {
+          isInteracting = false;
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+          finalSync();
+        });
+        
+        viewer.addEventListener('touchend', () => {
+          isInteracting = false;
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+          finalSync();
+        });
+        
+        viewer.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          startInteraction();
+          
+          if (zoomTimeout) clearTimeout(zoomTimeout);
+          zoomTimeout = setTimeout(() => {
+            isInteracting = false;
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+            finalSync();
+          }, 500);
+        }, { passive: false });
+      };
+      
+      viewers.forEach(setupInteractionListeners);
+    }
+  });
+</script>
+
+</body>
+</html>
