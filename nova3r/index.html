@@ -59,9 +59,18 @@
     /* Other styles */
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 明确指定4列布局 */
+      grid-template-columns: repeat(4, 1fr); /* 4-column comparison: Input / VGGT / LaRI / NOVA3R */
       gap: 10px;
       padding: 0;
+      align-items: center;
+    }
+
+    /* Column headers share the same grid so they always line up with the cells below */
+    .grid-container.labels {
+      margin-bottom: 0.5rem;
+    }
+    .grid-container.labels h2 {
+      margin: 0;
     }
 
     .obj1, .obj2, .obj3, .obj4 {
@@ -69,6 +78,18 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+    }
+
+    /* Make every comparison cell fluid and square so the strip scales down on mobile */
+    .grid-container model-viewer,
+    .grid-container .obj1 img {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 1 / 1;
+      max-width: 196px;
+    }
+    .grid-container .obj1 img {
+      object-fit: cover;
     }
   </style>
 </head>
@@ -170,16 +191,16 @@
                 </a>
               </span> -->
               
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
-                <a href="static/files/CVPR24_poster_leapvo_final.pdf"
+              <!-- Poster Link. -->
+              <span class="link-block">
+                <a href="./static/pdfs/nova3r_poster.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
                   <span>Poster</span>
                   </a>
-              </span> -->
+              </span>
 
             </div>
 
@@ -268,7 +289,7 @@
   </div>
   <br>
 
-  <div class="hero-body is-centered examples-panel" style="width: 1024px; margin: 0 auto; padding: 20px; border-radius: 10px; background-color: #f2f2f5bb;">
+  <div class="hero-body is-centered examples-panel" style="width: min(1024px, 100%); margin: 0 auto; padding: 20px; border-radius: 10px; background-color: #f2f2f5bb;">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   
   <!-- Reset button and Sync toggle -->
@@ -287,28 +308,12 @@
     </button>
   </div>
   
-  <div class="columns is-centered">
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-6 has-text-centered">Input image</h2>
-      </div>
-    </div>
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-6 has-text-centered">VGGT</h2>
-      </div>
-    </div>
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-6 has-text-centered">LaRI</h2>
-      </div>
-    </div>
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-6 has-text-centered">NOVA3R</h2>
-      </div>
-    </div>
-  </div>    
+  <div class="grid-container labels">
+    <h2 class="title is-6 has-text-centered">Input image</h2>
+    <h2 class="title is-6 has-text-centered">VGGT</h2>
+    <h2 class="title is-6 has-text-centered">LaRI</h2>
+    <h2 class="title is-6 has-text-centered">NOVA3R</h2>
+  </div>
   <div class="full_label scene1">
     <div class="grid-container">
       <div class="obj1">

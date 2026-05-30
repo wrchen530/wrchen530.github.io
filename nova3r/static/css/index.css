@@ -417,3 +417,68 @@ body {
     height: 335px;
     object-fit: cover;
 }
+
+
+/* ---------------------------------------------------------------------------
+   Responsive / mobile
+   --------------------------------------------------------------------------- */
+
+/* Tablet and below */
+@media screen and (max-width: 768px) {
+  /* Hero title: Bulma is-1 is fixed at 3rem and overflows on phones */
+  .hero--nova .publication-title.is-1 {
+    font-size: 1.85rem;
+  }
+  .hero--nova .hero-body {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .logo-container img {
+    width: 150px !important;
+  }
+
+  /* Comparison panel: tighten the chrome so cells get more room */
+  .section--examples .examples-panel {
+    padding: 12px !important;
+  }
+  .grid-container {
+    gap: 6px;
+  }
+  .grid-container.labels h2 {
+    font-size: 0.7rem;
+  }
+
+  /* TRELLIS pipeline: shrink gaps/padding so the 3-up stays usable */
+  .pipeline {
+    padding: 1rem 0.75rem;
+    gap: 16px;
+  }
+  .pipeline .cells {
+    gap: 10px;
+  }
+  .trellis-hero .row .title.is-5 {
+    font-size: 0.8rem;
+  }
+
+  .teaser--nova .subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+  .hero--nova .publication-title.is-1 {
+    font-size: 1.5rem;
+  }
+  .section--examples .examples-panel {
+    padding: 8px !important;
+  }
+  .grid-container {
+    gap: 4px;
+  }
+  /* Reset / Sync buttons wrap gracefully instead of overflowing */
+  #resetAllPosesBtn,
+  #toggleSyncBtn {
+    margin: 4px !important;
+  }
+}
