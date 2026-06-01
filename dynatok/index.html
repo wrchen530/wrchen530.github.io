@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DynaTok: Token-Based 4D Reconstruction from Partial Point Clouds</title>
+<meta name="description" content="DynaTok: a token-based framework for 4D reconstruction from partial, correspondence-free point cloud sequences. ICML 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg:          #FFFFFF;
+  --bg-tint:     #F6F9FC;
+  --surface:     #FFFFFF;
+  --hairline:    #E2E6EB;
+  --text:        #1F2937;
+  --text-muted:  #5F6B7A;
+  --text-faint:  #8B95A2;
+  --accent:      #1A73E8;          /* Google blue */
+  --accent-soft: #E8F0FE;
+  --teal:        #2A6A73;
+  --coral:       #E76F51;
+  --max-w:       900px;
+  --radius:      18px;
+  --radius-sm:   12px;
+  --shadow-sm:   0 1px 2px rgba(20, 30, 50, 0.04), 0 1px 3px rgba(20, 30, 50, 0.06);
+  --shadow-md:   0 4px 16px rgba(20, 30, 50, 0.06), 0 2px 4px rgba(20, 30, 50, 0.04);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Google Sans Display', 'Inter', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 48px 0 32px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,115,232,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(231,111,81,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(42,106,115,0.05) 0%, transparent 70%);
+}
+
+h1 {
+  font-family: 'Google Sans Display', 'Inter', sans-serif;
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  margin: 0 0 24px;
+  color: var(--text);
+}
+
+.venue {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 28px;
+}
+
+.authors {
+  list-style: none;
+  margin: 0 auto 14px;
+  padding: 0;
+  max-width: 920px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 24px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.authors li a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.authors li a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.authors li sup {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.7em;
+  margin-left: 2px;
+}
+
+.affiliations {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin: 6px 0 28px;
+}
+
+.affiliations sup {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ---------- Under-construction notice ---------- */
+.construction {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 28px auto 0;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--coral);
+  background: rgba(231, 111, 81, 0.08);
+  border: 1px solid rgba(231, 111, 81, 0.22);
+  border-radius: 999px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn.is-disabled {
+  color: var(--text-faint);
+  background: var(--bg-tint);
+  border-color: var(--hairline);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn.is-disabled:hover {
+  color: var(--text-faint);
+  border-color: var(--hairline);
+  transform: none;
+  box-shadow: none;
+}
+
+.btn.is-disabled .soon {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ---------- Sections ---------- */
+section {
+  padding: 38px 0;
+}
+
+section.tinted {
+  background: var(--bg-tint);
+}
+
+.section-head {
+  margin: 0 0 20px;
+}
+
+.section-head h2 {
+  font-family: 'Google Sans Display', 'Inter', sans-serif;
+  font-size: clamp(19px, 2vw, 23px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin: 0;
+  padding-left: 13px;
+  line-height: 1.15;
+  border-left: 3px solid var(--accent);
+}
+
+/* ---------- Teaser ---------- */
+.teaser {
+  padding: 8px 0 38px;
+}
+
+.teaser figure {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.teaser-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  padding: 14px;
+  box-shadow: var(--shadow-md);
+}
+
+.teaser-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.tldr {
+  max-width: 780px;
+  margin: 24px auto 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.tldr strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Abstract ---------- */
+.abstract p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 760px;
+  margin: 0 auto 1em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.abstract p:last-child {
+  margin-bottom: 0;
+}
+
+.abstract .name {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---------- Experiments / Method / Analysis ---------- */
+.exp-figure {
+  margin: 0 0 26px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  padding: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.exp-figure:last-child {
+  margin-bottom: 0;
+}
+
+.exp-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.exp-figure figcaption {
+  margin-top: 12px;
+  padding: 2px 6px 6px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  text-align: left;
+}
+
+.exp-figure figcaption strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---------- BibTeX ---------- */
+.bibtex-wrap {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.bibtex-wrap pre {
+  margin: 0;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--text);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-tint);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 40px 0 56px;
+  font-size: 13.5px;
+  color: var(--text-faint);
+  border-top: 1px solid var(--hairline);
+}
+
+footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-faint);
+}
+
+footer a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .hero { padding: 60px 0 48px; }
+  section { padding: 56px 0; }
+  .authors { font-size: 16px; gap: 4px 18px; }
+  .btn { padding: 10px 16px; font-size: 13.5px; }
+  .venue { font-size: 14px; padding: 8px 18px; }
+  .section-head { flex-direction: row; }
+  .container { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>DynaTok: Token-Based 4D Reconstruction<br>from Partial Point Clouds</h1>
+      <span class="venue">ICML 2026</span>
+
+      <ul class="authors">
+        <li><a href="https://wrchen530.github.io/">Weirong Chen</a><sup>1,2,3</sup></li>
+        <li><a href="https://scholar.google.com/citations?user=ml3laqEAAAAJ&amp;hl=ja">Keisuke Tateno</a><sup>2</sup></li>
+        <li><a href="https://muskie82.github.io/">Hidenobu Matsuki</a><sup>2</sup></li>
+        <li><a href="https://m-niemeyer.github.io/">Michael Niemeyer</a><sup>2</sup></li>
+        <li><a href="https://cvg.cit.tum.de/members/cremers">Daniel Cremers</a><sup>1,3</sup></li>
+        <li><a href="https://federicotombari.github.io/">Federico Tombari</a><sup>1,2,3</sup></li>
+      </ul>
+      <p class="affiliations">
+        <sup>1</sup>TU Munich&nbsp;&nbsp;·&nbsp;&nbsp;<sup>2</sup>Google&nbsp;&nbsp;·&nbsp;&nbsp;<sup>3</sup>Munich Center for Machine Learning
+      </p>
+
+      <nav class="actions">
+        <a class="btn" href="static/pdfs/dynatok_preprint.pdf" aria-label="Preprint">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          Preprint
+        </a>
+        <span class="btn is-disabled" aria-disabled="true" title="Code coming soon">
+          <svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+          Code
+        </span>
+        <!-- arXiv button hidden until public -->
+        <a class="btn" href="#bibtex" aria-label="BibTeX">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          BibTeX
+        </a>
+      </nav>
+
+      <p class="construction">🚧 Page under construction</p>
+    </div>
+  </header>
+
+  <!-- Teaser -->
+  <section class="teaser">
+    <div class="container">
+      <figure>
+        <div class="teaser-card">
+          <img src="static/teaser_icml.png" alt="DynaTok teaser: partial depth observations across time are aggregated into a complete, temporally coherent 4D scene." />
+        </div>
+      </figure>
+      <p class="tldr">
+        <strong>TL;DR:</strong> Given partial, unordered point-cloud sequences, <strong>DynaTok</strong> aggregates observations over time into compact tokens and reconstructs complete, temporally coherent 4D geometry.
+      </p>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="tinted abstract">
+    <div class="container">
+      <header class="section-head">
+        <h2>Abstract</h2>
+      </header>
+      <p>
+        We address <strong>4D reconstruction from partial point cloud sequences</strong>, where
+        depth-sensor observations are incomplete, unordered, and lack explicit temporal
+        correspondences. This geometry-only setting is challenging due to missing observations and
+        ambiguous dynamics. While recent progress has largely relied on image-based methods, existing
+        point-based approaches typically focus on single objects, assume relatively complete inputs, or
+        require explicit correspondences.
+      </p>
+      <p>
+        To address these limitations, we propose <span class="name">DynaTok</span>, a point-based
+        framework for correspondence-free 4D reconstruction from partial point cloud sequences without
+        images. DynaTok encodes frames into compact latent tokens, aggregates incomplete observations
+        over time with a Transformer-based spatiotemporal encoder, and decouples geometry and motion
+        through residual tokens in a unified model. A flow-matching decoder then reconstructs complete,
+        temporally consistent 4D point-cloud sequences conditioned on the latent tokens.
+      </p>
+      <p>
+        Experiments on object- and scene-level benchmarks demonstrate improved reconstruction quality
+        and temporal coherence from partial point cloud observations.
+      </p>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section>
+    <div class="container">
+      <header class="section-head">
+        <h2>Method</h2>
+      </header>
+
+      <figure class="exp-figure">
+        <img src="static/pipeline.png" alt="DynaTok pipeline overview." />
+        <figcaption>
+          <strong>Overview of the DynaTok pipeline.</strong>
+          Each input point cloud is tokenized into per-frame latent tokens and aggregated by a
+          Transformer-based spatiotemporal encoder. A residual decomposition separates the geometry
+          tokens at the reference frame (<em>s</em>&nbsp;=&nbsp;1) from per-frame motion tokens
+          (<em>s</em>&nbsp;&gt;&nbsp;1), and a conditional flow-matching decoder reconstructs the
+          complete scene at every timestep. The model is trained end-to-end with point-cloud
+          supervision only.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="tinted">
+    <div class="container">
+      <header class="section-head">
+        <h2>Results</h2>
+      </header>
+
+      <figure class="exp-figure">
+        <img src="static/exp_dt4d.png" alt="Qualitative results on DeformingThings4D-Animals." />
+        <figcaption>
+          <strong>Object-level 4D reconstruction on DeformingThings4D-Animals.</strong>
+          Under partial point-cloud input back-projected from depth, DynaTok produces clearer
+          articulated geometry and recovers regions that are unobserved in individual frames,
+          compared to Motion2VecSets and frame-wise 3D latent baselines.
+        </figcaption>
+      </figure>
+
+      <figure class="exp-figure">
+        <img src="static/exp_kubric.png" alt="Qualitative results on Kubric scene-level 4D reconstruction." />
+        <figcaption>
+          <strong>Scene-level 4D reconstruction on Kubric.</strong>
+          On multi-object dynamic scenes with moving camera and static background, DynaTok aggregates
+          partial observations into a coherent canonical space, yielding dense and accurate
+          reconstructions of both dynamic objects and background structure.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Analysis -->
+  <section>
+    <div class="container">
+      <header class="section-head">
+        <h2>Canonical Space Analysis</h2>
+      </header>
+
+      <figure class="exp-figure">
+        <img src="static/canonical.png" alt="Evolution of the canonical space as more frames are observed." />
+        <figcaption>
+          <strong>Canonical-space evolution across timesteps.</strong>
+          As more frames are progressively incorporated (<em>S</em>&nbsp;=&nbsp;1, 4, 8, 12, 16), the
+          canonical representation anchored at the reference frame is consistently expanded with
+          newly observed geometry. The reconstruction grows denser and more complete, confirming
+          that DynaTok fuses multi-frame observations into a unified scene rather than
+          reconstructing each frame independently.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section id="bibtex" class="tinted">
+    <div class="container">
+      <header class="section-head">
+        <h2>BibTeX</h2>
+      </header>
+      <div class="bibtex-wrap">
+        <button class="copy-btn" id="copyBtn" type="button" aria-label="Copy BibTeX to clipboard">Copy</button>
+<pre id="bibtexBlock"><code>@inproceedings{chen2026dynatok,
+  title     = {DynaTok: Token-Based 4D Reconstruction from Partial Point Clouds},
+  author    = {Chen, Weirong and Tateno, Keisuke and Matsuki, Hidenobu and
+               Niemeyer, Michael and Cremers, Daniel and Tombari, Federico},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2026}
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Page template adapted for DynaTok &middot; ICML 2026
+    </div>
+  </footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copyBtn');
+  var block = document.getElementById('bibtexBlock');
+  if (!btn || !block) return;
+  btn.addEventListener('click', function () {
+    var text = block.innerText;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    var orig = btn.textContent;
+    btn.textContent = 'Copied';
+    setTimeout(function () { btn.textContent = orig; }, 1400);
+  });
+})();
+</script>
+
+</body>
+</html>
