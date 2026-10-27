@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AnchorComplete project page — minimal path preview.">
+  <title>AnchorComplete · Preview</title>
+  <link rel="icon" href="./assets/cube.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <main>
+    <a class="home" href="../">← Weirong Chen</a>
+    <div class="intro">
+      <img id="project-icon" src="./assets/cube.svg" alt="" width="64" height="64">
+      <p class="eyebrow">Project page · Path preview</p>
+      <h1>AnchorComplete</h1>
+      <p class="subtitle">Recovering Complete Scene Meshes<br>from Partial Point Clouds</p>
+      <p class="description">A minimal preview of our project website.</p>
+    </div>
+    <div class="path-card">
+      <span class="label">Current path</span>
+      <code id="current-path">/anchor-complete/</code>
+      <p id="asset-status" role="status">Checking relative assets…</p>
+    </div>
+    <footer>Full project presentation will be added here.</footer>
+  </main>
+  <script>
+    document.querySelector('#current-path').textContent = location.pathname;
+    function checkAssets() {
+      const styles = getComputedStyle(document.documentElement).getPropertyValue('--preview-assets-ready').trim() === 'yes';
+      const icon = document.querySelector('#project-icon');
+      const image = icon.complete && icon.naturalWidth > 0;
+      document.querySelector('#asset-status').textContent = styles && image
+        ? 'Relative stylesheet and image loaded successfully.'
+        : 'An asset could not load. Check the subdirectory path.';
+      document.querySelector('#asset-status').dataset.state = styles && image ? 'ready' : 'error';
+    }
+    window.addEventListener('load', checkAssets);
+  </script>
+</body>
+</html>
