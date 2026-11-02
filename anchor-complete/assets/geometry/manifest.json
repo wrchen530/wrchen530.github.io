@@ -2141,16 +2141,16 @@
       "input": {
         "ceil_m": 2.3,
         "floors": [
-          -3.725125312805176,
-          -0.06603307202458382
+          -3.725463628768921,
+          -0.36883471111456556
         ],
-        "split_z": -0.08,
+        "split_z": -0.4,
         "upper_floor_lift_m": 12,
         "model": "original paper teaser: IS single cube S1/S2@40000,10 noisy GT views",
-        "url": "assets/geometry/teaser-house-input-v12.bin",
-        "bytes": 2631750,
+        "url": "assets/geometry/teaser-house-input-v14.bin",
+        "bytes": 2638049,
         "points": 260000,
-        "cropped_source_points": 578121,
+        "cropped_source_points": 586006,
         "sampling": "seed42 subset of current Overleaf teaser input points",
         "source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/2n8kARJN3HM/observed_gtns_lvpick2.ply",
         "source_sha256": "175f100baab172183fa7f402950825cfa8281029cc5c42b89a2f8567891d04b7",
@@ -2158,7 +2158,7 @@
         "display_transport": {
           "codec": "morton-xor-byteplanes-v1",
           "lossless_geometry": true,
-          "decoded_position_sha256": "8b57c80f39dda1edc2a11589e33bf6f981643977d1de14ef490b2ee2f7fdf4bf"
+          "decoded_position_sha256": "9f0e820819d01a2547a732f0b594a452c247de7512ae6c401a0b9d689cadea7f"
         }
       },
       "output": {
@@ -2172,10 +2172,10 @@
         "source_sha256": "b4f121d8557de8d9530cb46885e60effd0ed48facce9b2e985d289ba62271282",
         "ceil_m": 2.3,
         "floors": [
-          -3.725125312805176,
-          -0.06603307202458382
+          -3.725463628768921,
+          -0.36883471111456556
         ],
-        "split_z": -0.08,
+        "split_z": -0.4,
         "upper_floor_lift_m": 12,
         "model": "original paper teaser: IS single cube S1/S2@40000,10 noisy GT views",
         "display_transport": {
