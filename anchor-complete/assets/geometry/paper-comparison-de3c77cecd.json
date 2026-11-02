@@ -1,0 +1,136 @@
+{
+  "id": "snpp-de3c77cecd",
+  "dataset": "ScanNet++",
+  "scene": "de3c77cecd",
+  "views": 8,
+  "input_label": "GT-depth input",
+  "paper_figure": null,
+  "camera": {
+    "eye": [
+      3.76771084914996,
+      16.473706250572214,
+      22.204861105612654
+    ],
+    "target": [
+      4.890548825263977,
+      3.639609456062317,
+      1.5875577926635742
+    ],
+    "up": [
+      0,
+      0,
+      1
+    ],
+    "fov": 30
+  },
+  "methods": {
+    "Input": {
+      "url": "assets/geometry/paper-snpp-de3c77cecd-input.bin",
+      "bytes": 2477338,
+      "points": 260000,
+      "cropped_source_points": 1174935,
+      "sampling": "seed42 subset of source points",
+      "source": "/storage/user/chwe/Research/Complete25/TRELLIS-chunked-scene/eval_results/chunked_scene/scannetpp_de3c77cecd_gt_n8/gt_visible_n8.ply",
+      "source_sha256": "6ac2a3492e62b6e65e2b9d80959954f0c772354470b7b28e7312c9b8626a0a77",
+      "views": 8,
+      "method": "Input",
+      "crop_z": 2.906329667568207,
+      "input_kind": "GT-depth partial point cloud",
+      "display_transport": {
+        "codec": "morton-xor-byteplanes-v1",
+        "lossless_geometry": true,
+        "decoded_position_sha256": "e107916d46ba8abe5026ef0b677c2d30bf45dab2e03b1fdaf64c090a8401f4ed"
+      }
+    },
+    "NKSR": {
+      "url": "assets/geometry/paper-snpp-de3c77cecd-nksr.bin",
+      "bytes": 4828749,
+      "vertices": 419532,
+      "triangles": 750000,
+      "source_triangles": 3912582,
+      "simplification": "weld identical vertices; quadric simplification to at most750000 faces",
+      "source": "/storage/user/chwe/Research/Complete25/TRELLIS-chunked-scene/eval_results/chunked_scene/baseline_nksr_de3c77cecd_n8/scene_mesh.ply",
+      "source_sha256": "a0c68fd17d069c174f9406e379fb4d96cfbfacc4bcc378ffb7ebac516693d94a",
+      "views": 8,
+      "method": "NKSR",
+      "crop_z": 2.906329667568207,
+      "flip_winding": false,
+      "alignment": "native ScanNet++ world; no extra ICP",
+      "paper_figure": null,
+      "display_transport": {
+        "codec": "morton-xor-byteplanes-v1",
+        "lossless_geometry": true,
+        "decoded_position_sha256": "5765e992216e8ee0a4826d130ad7480a7945ec15622e7d4f53c503a8ef368170",
+        "decoded_index_sha256": "5377679b087f14f3bb2a9100b7ead8dfeb55512f56e7c3a42759577f346164f7"
+      }
+    },
+    "SGNN": {
+      "url": "assets/geometry/paper-snpp-de3c77cecd-sgnn.bin",
+      "bytes": 3328488,
+      "vertices": 332346,
+      "triangles": 642506,
+      "source_triangles": 642506,
+      "simplification": "weld identical vertices; quadric simplification to at most750000 faces",
+      "source": "/storage/user/chwe/Research/Complete25/TRELLIS-chunked-scene/eval_results/chunked_scene/baseline_sgnn_de3c77cecd_n8/scene_mesh.ply",
+      "source_sha256": "11372294f7b71a99c1a13d5a43f76e0545f495b6884c85a2116bc95dc80cd242",
+      "views": 8,
+      "method": "SGNN",
+      "crop_z": 2.906329667568207,
+      "flip_winding": false,
+      "alignment": "native ScanNet++ world; no extra ICP",
+      "paper_figure": null,
+      "display_transport": {
+        "codec": "morton-xor-byteplanes-v1",
+        "lossless_geometry": true,
+        "decoded_position_sha256": "8d5f1301e1820c2d5ba7a30cb93460843d6167510f7665e048415bbb50e4aa6b",
+        "decoded_index_sha256": "94158347b2dd9bcaa529f65360462f94f4ee05e8b1b34dfc59d781fe08db20b7"
+      }
+    },
+    "Seen2Scene": {
+      "url": "assets/geometry/paper-snpp-de3c77cecd-seen2scene.bin",
+      "bytes": 5027602,
+      "vertices": 412910,
+      "triangles": 749999,
+      "source_triangles": 4693765,
+      "simplification": "weld identical vertices; quadric simplification to at most750000 faces",
+      "source": "/storage/user/chwe/Research/Complete25/TRELLIS-chunked-scene/eval_results/chunked_scene/baseline_seen2scene_de3c77cecd_n8/scene_mesh.ply",
+      "source_sha256": "ea9121d45b6d8a491432664f317aea7d81fcccdff758a108dc76b2da0c63f1e5",
+      "views": 8,
+      "method": "Seen2Scene",
+      "crop_z": 2.906329667568207,
+      "flip_winding": false,
+      "alignment": "native ScanNet++ world; no extra ICP",
+      "paper_figure": null,
+      "display_transport": {
+        "codec": "morton-xor-byteplanes-v1",
+        "lossless_geometry": true,
+        "decoded_position_sha256": "f0b53a2410fb7b8e2b926f256c7d99718e5e4294cf8c1245034af22287c2592e",
+        "decoded_index_sha256": "08692906c5bf8b6bb6a45da814d35859b83370507508adff798517b2084a1028"
+      }
+    },
+    "Ours": {
+      "url": "assets/geometry/paper-snpp-de3c77cecd-ours.bin",
+      "bytes": 4932741,
+      "vertices": 363730,
+      "triangles": 749999,
+      "source_triangles": 19565916,
+      "simplification": "weld identical vertices; quadric simplification to at most750000 faces",
+      "source": "/storage/user/chwe/Research/Complete25/TRELLIS-chunked-scene/eval_results/chunked_scene/scannetpp_de3c77cecd_gt_n8_cvis3_n8/scene_mesh.ply",
+      "source_sha256": "99f623ee37c912dc492e6657f6c2aebf7b7d7d47991202c4275b87a514f40e59",
+      "views": 8,
+      "method": "Ours",
+      "crop_z": 2.906329667568207,
+      "flip_winding": false,
+      "alignment": "native ScanNet++ world; no extra ICP",
+      "paper_figure": null,
+      "display_transport": {
+        "codec": "morton-xor-byteplanes-v1",
+        "lossless_geometry": true,
+        "decoded_position_sha256": "0d6e496b06539c63121121964ee5d0db4f87f89eda544766f4e87a6992525c2d",
+        "decoded_index_sha256": "4099cacdca58a5a70adc8ec6ff8f088b9d3072d88ce3b348c2925ad31e89db54"
+      }
+    }
+  },
+  "crop_z": 2.906329667568207,
+  "protocol": "eight GT-depth views; native common world; same ceiling plane for all methods"
+}

@@ -1,0 +1,562 @@
+[
+  {
+    "id": "b4b39438f0",
+    "dataset": "ScanNet++",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS-chunked-scene/eval_results/chunked_scene/scannetpp_b4b39438f0_gt_n10/gt_visible_n10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/teaser_cvis3/SNPP/b4b39438f0_n10_L0/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth",
+    "input_asset": "assets/scale-gallery/b4b39438f0-input.webp",
+    "output_asset": "assets/scale-gallery/b4b39438f0-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 2.8689240848958493,
+    "extent_m": [
+      6.313455452919007,
+      6.707740657925606,
+      4.301530940681696
+    ],
+    "camera": {
+      "eye": [
+        -2.2920341557072543,
+        14.244671422146563,
+        20.96699722496924
+      ],
+      "target": [
+        3.828777253627777,
+        3.677530974149704,
+        1.423984169960022
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "05c2d7d3f3d1be9c0b72809ccb092863b6ae52ea6ad27fb0423cb253bc005f2c",
+    "mesh_sha256": "1b84277c37e3342a429024dd2559b4d649d6224d8a0a472299afa7a141db7d56",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "f34d532901",
+    "dataset": "ScanNet++",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS-chunked-scene/eval_results/chunked_scene/scannetpp_f34d532901_gt_n8/gt_visible_n8.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/cleanvis/snpp_n8/f34d532901_vis/exported.ply",
+    "views": 8,
+    "input_kind": "GT depth",
+    "input_asset": "assets/scale-gallery/f34d532901-input.webp",
+    "output_asset": "assets/scale-gallery/f34d532901-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 1.9220903925299644,
+    "extent_m": [
+      6.025374718010417,
+      6.2564631089568135,
+      2.905226136744022
+    ],
+    "camera": {
+      "eye": [
+        13.47870164383328,
+        7.932527931974112,
+        18.313651977114535
+      ],
+      "target": [
+        3.557341754436493,
+        3.542082190513611,
+        0.95098876953125
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "def0aaa263e0074e9b16d939740fc1496a7d091c84fe8d6328c01edda6386b14",
+    "mesh_sha256": "d4784811a5bbdf2ae268be8977365ce82137df3a3a8edc04594b55b5fb692963",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "cbd4b3055e",
+    "dataset": "ScanNet++",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/metric_da3_inputs/scannetpp_cbd4b3055e/observed_gtns_n10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/teaser_cvis3_figs/gtns/SNPP/cbd4b3055e_cvis3/ours_texA.ply",
+    "views": 10,
+    "input_kind": "noisy GT depth",
+    "input_asset": "assets/scale-gallery/cbd4b3055e-input.webp",
+    "output_asset": "assets/scale-gallery/cbd4b3055e-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 2.0348885950744147,
+    "extent_m": [
+      6.197946555316448,
+      6.141536913514137,
+      3.0813405819237225
+    ],
+    "camera": {
+      "eye": [
+        9.81392282119367,
+        12.203312617147017,
+        18.65727094983951
+      ],
+      "target": [
+        3.289865016937256,
+        3.3247686326503754,
+        1.0251083220355213
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "6bbe022412e9848653c1730d66827020ee81634ce6ad460b616d4750b30e518b",
+    "mesh_sha256": "8005e20c3f8e34d0efb259d767e7a5113fcf935d31a15081794ccc1f84728dee",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "2t7WUuJeko7",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/2t7WUuJeko7/observed_df2_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/pipeline_fig_df2/gt/MP3D/2t7WUuJeko7_cvis3/exported_texA.ply",
+    "views": 20,
+    "input_kind": "DF2 perspective views",
+    "input_asset": "assets/scale-gallery/2t7WUuJeko7-input.webp",
+    "output_asset": "assets/scale-gallery/2t7WUuJeko7-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 2.160166092951596,
+    "extent_m": [
+      11.706039071083069,
+      9.156594514846802,
+      3.3974983067438003
+    ],
+    "camera": {
+      "eye": [
+        2.88639748758467,
+        9.846771238731888,
+        21.208709942619677
+      ],
+      "target": [
+        4.305543661117554,
+        -2.6585288047790527,
+        1.0675919754430652
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "d06de5dcdd1c7b664e2b49ba39c5a713792f3171b87acd13d2e59b0b07bf1bf4",
+    "mesh_sha256": "0810a130438bc6e0490cda524f3861b57b530e54fee4fe8657f7de718f0edaba",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "17DRP5sb8fy",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/17DRP5sb8fy/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/teaser_cvis3/MP3D/17DRP5sb8fy_n10_L0/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/17DRP5sb8fy/observed_lv10_rgb.ply",
+    "input_point_count": 1993596,
+    "colour_source_sha256": "e40b9a974c0eeca2c1e014115b3f8e5cf737e74968495447f7b99726ef2b8bee",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/17DRP5sb8fy-input.webp",
+    "output_asset": "assets/scale-gallery/17DRP5sb8fy-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 1.625288060426712,
+    "extent_m": [
+      16.06257586479187,
+      8.134054696559907,
+      2.566401022672653
+    ],
+    "camera": {
+      "eye": [
+        -2.5786825101943434,
+        16.209247004800936,
+        24.717513163748063
+      ],
+      "target": [
+        -3.35779070854187,
+        1.2493681907653809,
+        0.7442570775747299
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "4af78cb8b3ed163a04b5f7095f10b0916eee56403b6749d673908f0faf753e82",
+    "mesh_sha256": "b1ebfa0cfaaac0d72db72855bf06409f3c8d1eb1bd68f22d6bf59f4b976fafc7",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "JeFG25nYj2p",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/JeFG25nYj2p/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/teaser_cvis3/MP3D/JeFG25nYj2p_n10_L0/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/JeFG25nYj2p/observed_lv10_rgb.ply",
+    "input_point_count": 1988974,
+    "colour_source_sha256": "5defca638900833b844a8ebc47f0400a431c0e6e0f5b0736a971d03198d10071",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/JeFG25nYj2p-input.webp",
+    "output_asset": "assets/scale-gallery/JeFG25nYj2p-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 1.7844606733322144,
+    "extent_m": [
+      14.565509781837463,
+      17.850091195106508,
+      2.8354045152664185
+    ],
+    "camera": {
+      "eye": [
+        23.601503214451697,
+        -1.3789560690334632,
+        34.94824770581649
+      ],
+      "target": [
+        2.2955586910247803,
+        -1.6469969749450684,
+        0.8489108681678772
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "8498177bcd8bd5f124dd76e4874c3a80e4180399c2a8b8c7756497fd0e0c0b72",
+    "mesh_sha256": "73bfcf142b56c0d5cb73f232ee2b5fadcaa2bd077721c25e13f636b53a079997",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "RPmz2sHmrrY",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/RPmz2sHmrrY/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/teaser_cvis3/MP3D/RPmz2sHmrrY_n10_L0/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/RPmz2sHmrrY/observed_lv10_rgb.ply",
+    "input_point_count": 1998400,
+    "colour_source_sha256": "b86cfb2b7d494397f6a5583fcfe031ce823e000671f08acf6e048a6594e48264",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/RPmz2sHmrrY-input.webp",
+    "output_asset": "assets/scale-gallery/RPmz2sHmrrY-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 1.5895558777809145,
+    "extent_m": [
+      8.132453932762147,
+      12.439541838765145,
+      2.4986528182029724
+    ],
+    "camera": {
+      "eye": [
+        -13.423814815925489,
+        0.7741094939640174,
+        24.431981890789952
+      ],
+      "target": [
+        -0.028914451599121094,
+        -5.472238153219223,
+        0.7794806957244873
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "47c89cd2d0fdea495e7fd071c53747c511ded86768705aa7f19152b5829975a6",
+    "mesh_sha256": "bb362c172a10e76eb29c3dd00761f61b1f54e9ce7642e4bcb7fa3299c4614a0e",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "1LXtFkjw3qL",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/1LXtFkjw3qL/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/pipeline_fig_cvis3/gt/MP3D/1LXtFkjw3qL_cvis3/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/1LXtFkjw3qL/observed_lv10_rgb.ply",
+    "input_point_count": 2813119,
+    "colour_source_sha256": "cdf4978bd51eae7e2ff64c44023fb31fef32a91a64a64451f3a6245414a35d24",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/1LXtFkjw3qL-input.webp",
+    "output_asset": "assets/scale-gallery/1LXtFkjw3qL-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 3.816161416625974,
+    "extent_m": [
+      11.24278120994568,
+      21.42859727859497,
+      10.737570037841792
+    ],
+    "camera": {
+      "eye": [
+        -22.875294919736337,
+        -1.733522553520638,
+        35.025945735074124
+      ],
+      "target": [
+        -1.7495100498199463,
+        -6.548314332962036,
+        0.35068070888519287
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "5ed540e7d704006d4e6c7d914361a60d3accac803915d0c7bc427f0aab933a24",
+    "mesh_sha256": "3ddb9a8bfed1fecde0dd21b73a0d198a9c7e8386007967dfc5f7b6f281679129",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "1pXnuDYAj8r",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/1pXnuDYAj8r/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/pipeline_fig_cvis3/gt/MP3D/1pXnuDYAj8r_cvis3/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/1pXnuDYAj8r/observed_lv10_rgb.ply",
+    "input_point_count": 3779317,
+    "colour_source_sha256": "0b82c62fe9385ed83f032d2b11ede930fdf136d56dfbaa459028368cc6661c7e",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/1pXnuDYAj8r-input.webp",
+    "output_asset": "assets/scale-gallery/1pXnuDYAj8r-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 3.8966452903747557,
+    "extent_m": [
+      13.283975448608398,
+      23.13058746337891,
+      6.295204448699951
+    ],
+    "camera": {
+      "eye": [
+        -19.43505676600447,
+        8.00509614387675,
+        50.003622876400314
+      ],
+      "target": [
+        9.495332688093185,
+        -0.36745357513427734,
+        1.8054622411727905
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "d8fa66374d964e17a2772f8f5e6f14f9fdc3fa39c953248036be3401098932f2",
+    "mesh_sha256": "349216b041dc672dc837c0a9892fd7e4e5a25126454e4828ae6ac4f75e287ece",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "29hnd4uzFmX",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/29hnd4uzFmX/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/pipeline_fig_cvis3/gt/MP3D/29hnd4uzFmX_cvis3/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/29hnd4uzFmX/observed_lv10_rgb.ply",
+    "input_point_count": 3987196,
+    "colour_source_sha256": "b7616fdc685970a63db4a8d246820dc073b25b78042828fed43149b8ed3fd054",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/29hnd4uzFmX-input.webp",
+    "output_asset": "assets/scale-gallery/29hnd4uzFmX-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 4.015385793685913,
+    "extent_m": [
+      11.267023813724517,
+      11.145659017562867,
+      6.816624736785887
+    ],
+    "camera": {
+      "eye": [
+        14.307838400718392,
+        12.402640375863406,
+        32.80949517402239
+      ],
+      "target": [
+        -2.754796028137207,
+        3.1074728965759277,
+        1.7146356701850891
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "4e991dbc27ca3565e168877c7658a7205f04d87d8a74d347e1c4b38bfd70f87e",
+    "mesh_sha256": "c012c15fb09fdbbd9bde2581d4e6e3edff9d11123ccfc120c1ff7b9215fff7e5",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "S9hNv5qa7GM",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/S9hNv5qa7GM/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/pipeline_fig_cvis3/gt/MP3D/S9hNv5qa7GM_cvis3/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/S9hNv5qa7GM/observed_lv10_rgb.ply",
+    "input_point_count": 3999997,
+    "colour_source_sha256": "1ef747eb5cff0ecefdb9659cd9efb52446c7c6de9a8068b5453599d6233d32ad",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/S9hNv5qa7GM-input.webp",
+    "output_asset": "assets/scale-gallery/S9hNv5qa7GM-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 3.385638201522827,
+    "extent_m": [
+      17.178891954421996,
+      14.533286113739013,
+      5.339400072097778
+    ],
+    "camera": {
+      "eye": [
+        12.716162359524052,
+        21.242397443009963,
+        47.251810269840114
+      ],
+      "target": [
+        -6.066078186035156,
+        -0.17506194114685059,
+        1.6638963222503662
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "eb6b453bfc8c04d51c64c9c5743a8c0a2f68d19f6782c64ab290d9fb902bfe82",
+    "mesh_sha256": "ab3edd2145e1b425bc5fef151e8ed8d77331ccc30b929a756c72d21016de79e0",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  },
+  {
+    "id": "zsNo4HB9uLZ",
+    "dataset": "Matterport3D",
+    "input": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/zsNo4HB9uLZ/observed_lv10.ply",
+    "mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/pipeline_fig_cvis3/gt/MP3D/zsNo4HB9uLZ_cvis3/exported_proxy.ply",
+    "views": 10,
+    "input_kind": "GT depth, capture stations per level",
+    "colour_source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/zsNo4HB9uLZ/observed_lv10_rgb.ply",
+    "input_point_count": 1999689,
+    "colour_source_sha256": "a5a081df276b59348637d1a63ae441b973caf3a5571c1da59ee1b33bbc114ebf",
+    "colour_transfer": "nearest-neighbour RGB only; all inference input coordinates retained",
+    "input_asset": "assets/scale-gallery/zsNo4HB9uLZ-input.webp",
+    "output_asset": "assets/scale-gallery/zsNo4HB9uLZ-output.webp",
+    "width": 1400,
+    "height": 1000,
+    "crop_z": 1.8675447536468506,
+    "extent_m": [
+      18.845076236724854,
+      12.517378807067871,
+      2.9327464962005614
+    ],
+    "camera": {
+      "eye": [
+        3.1438950159815304,
+        21.670412975850855,
+        34.45840028181754
+      ],
+      "target": [
+        8.785531878471375,
+        1.479935646057129,
+        0.9092106819152832
+      ],
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "fov": 30
+    },
+    "input_sha256": "68d7b0825d671ab96534d636ae29f9efa9c52ff4d5c0330440aa5ee299b26d93",
+    "mesh_sha256": "bab3e526482128c008591aa7b2ddf2aa2b40647ad054ddb039003b51de67f381",
+    "model": {
+      "s1": "metric_s1_clean_vis3",
+      "s1_step": 40000,
+      "s2": "metric_s2_issage",
+      "s2_step": 30000
+    }
+  }
+]

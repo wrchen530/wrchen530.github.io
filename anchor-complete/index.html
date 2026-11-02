@@ -3,40 +3,179 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="AnchorComplete project page — minimal path preview.">
-  <title>AnchorComplete · Preview</title>
-  <link rel="icon" href="./assets/cube.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./assets/style.css">
+  <meta name="description" content="AnchorComplete recovers complete, metric-scale scene meshes from partial point clouds.">
+  <meta name="theme-color" content="#ffffff">
+  <title>AnchorComplete | Complete Scene Meshes from Partial Point Clouds</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=paper-code-links-v1">
+  <script src="scale-scenes.js?v=mp3d-candidates-v1" defer></script>
+  <script src="app.js?v=mp3d-candidates-v1" defer></script>
+  <script src="web-geometry.js?v=teaser-final-mesh-v10" defer></script>
+  <script type="module" src="viewer-3d.js?v=static-poster-fallback-v1"></script>
 </head>
 <body>
-  <main>
-    <a class="home" href="../">← Weirong Chen</a>
-    <div class="intro">
-      <img id="project-icon" src="./assets/cube.svg" alt="" width="64" height="64">
-      <p class="eyebrow">Project page · Path preview</p>
-      <h1>AnchorComplete</h1>
-      <p class="subtitle">Recovering Complete Scene Meshes<br>from Partial Point Clouds</p>
-      <p class="description">A minimal preview of our project website.</p>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="wordmark" href="#"><img src="assets/anchorcomplete-mark.svg" alt="" width="26" height="26">AnchorComplete</a>
+  <nav aria-label="Main navigation"><a href="#reconstructions">Reconstructions</a><a href="#overview">Overview</a><a href="#comparison">Compare</a><a href="#abstract">Abstract</a><a href="#method">Pipeline</a><a href="#results">Results</a><span class="nav-disabled" aria-disabled="true" title="Temporarily unavailable">Paper</span><span class="nav-disabled" aria-disabled="true" title="Repository URL not set">Code</span></nav>
+</header>
+<main id="main">
+  <section class="hero container">
+    <h1>AnchorComplete</h1>
+    <p class="paper-title">Recovering Complete Scene Meshes from Partial Point Clouds</p>
+    <p class="authors"><span>Weirong Chen<sup>1,2*</sup></span><span>Ismail El-Yamany<sup>3*</sup></span><span>Ganlin Zhang<sup>1,2</sup></span><br><span>Chuanxia Zheng<sup>3#</sup></span><span>Andrea Vedaldi<sup>4</sup></span><span>Daniel Cremers<sup>1,2</sup></span></p>
+    <p class="affiliations"><span><sup>1</sup>Technical University of Munich</span><span><sup>2</sup>Munich Center for Machine Learning</span><br><span><sup>3</sup>Nanyang Technological University</span><span><sup>4</sup>University of Oxford</span></p>
+    <p class="author-roles"><span><sup>*</sup> Core technical contribution</span><span><sup>#</sup> Project lead</span></p>
+    <div class="hero-actions">
+      <span class="paper-button is-disabled" aria-disabled="true" title="Temporarily unavailable"><svg aria-hidden="true" width="15" height="16" viewBox="0 0 15 16" fill="none"><path d="M3 1h6l3 3v11H3V1Z" stroke="currentColor" stroke-width="1.2"/><path d="M9 1v4h3M5 8h5M5 11h5" stroke="currentColor"/></svg>Paper</span>
+      <span class="paper-button code-button is-disabled" aria-disabled="true" title="Repository URL not set">Code</span>
+      <details class="citation-block">
+        <summary>BibTeX</summary>
+        <pre><code>@inproceedings{chen2027anchorcomplete,
+  title     = {Recovering Complete Scene Meshes from Partial Point Clouds},
+  author    = {Chen, Weirong and El-Yamany, Ismail and Zhang, Ganlin and
+               Zheng, Chuanxia and Vedaldi, Andrea and Cremers, Daniel},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2027}
+}</code></pre>
+      </details>
     </div>
-    <div class="path-card">
-      <span class="label">Current path</span>
-      <code id="current-path">/anchor-complete/</code>
-      <p id="asset-status" role="status">Checking relative assets…</p>
+    <div class="hero-gallery" id="reconstructions">
+      <div class="scene-tabs" role="group" aria-label="Select scene scale"><button data-scene="room" class="selected" aria-pressed="true">Room</button><button data-scene="office" aria-pressed="false">Office</button><button data-scene="house" aria-pressed="false">Two-story apartment</button></div>
+      <div id="teaser-viewer" class="viewer-shell paired-viewer teaser-viewer">
+        <div class="hero-pair">
+          <figure><figcaption>Input <span>Partial point cloud</span></figcaption><div class="hero-image canvas-host" data-label="Teaser input point cloud 3D"><img id="hero-input" class="viewer-poster" src="assets/room-input.webp" alt="Partial point cloud of the Replica room" width="1095" height="649"></div></figure>
+          <figure><figcaption>Output <span>Completed mesh</span></figcaption><div class="hero-image canvas-host" data-label="Teaser output mesh 3D"><img id="hero-output" class="viewer-poster" src="assets/room-output.webp" alt="Completed mesh of the Replica room" width="1095" height="649"></div></figure>
+        </div>
+        <div class="viewer-toolbar"><span class="viewer-status" role="status" aria-live="polite"></span><div class="viewer-actions"><button type="button" data-view-action="in" aria-label="Zoom in">+</button><button type="button" data-view-action="out" aria-label="Zoom out">−</button><button type="button" data-view-action="reset">Reset view</button><button type="button" data-view-action="fullscreen" aria-label="Toggle full screen">⛶</button></div></div>
+      </div>
+      <p class="figure-caption" id="scene-caption">Replica · 7.8 × 4.7 m · 10 views</p>
+      <p class="sample-note">Drag either view to explore · scroll or pinch to zoom · both cameras stay in sync.</p>
     </div>
-    <footer>Full project presentation will be added here.</footer>
-  </main>
-  <script>
-    document.querySelector('#current-path').textContent = location.pathname;
-    function checkAssets() {
-      const styles = getComputedStyle(document.documentElement).getPropertyValue('--preview-assets-ready').trim() === 'yes';
-      const icon = document.querySelector('#project-icon');
-      const image = icon.complete && icon.naturalWidth > 0;
-      document.querySelector('#asset-status').textContent = styles && image
-        ? 'Relative stylesheet and image loaded successfully.'
-        : 'An asset could not load. Check the subdirectory path.';
-      document.querySelector('#asset-status').dataset.state = styles && image ? 'ready' : 'error';
-    }
-    window.addEventListener('load', checkAssets);
-  </script>
+    <p class="lead" id="tldr"><strong>TL;DR</strong> AnchorComplete turns partial point clouds into complete scene meshes, preserves observed geometry, and scales from individual rooms to large multi-room scenes through metric-scale coarse-to-fine generation.</p>
+  </section>
+
+  <section class="section container" id="abstract" aria-labelledby="abstract-title">
+    <details class="abstract-disclosure"><summary><span id="abstract-title">Abstract</span><span class="abstract-toggle">Read abstract <span aria-hidden="true">⌄</span></span></summary>
+    <p class="abstract-text">Most image-based 3D reconstructors prioritize reconstructing visible surfaces, producing partial point clouds with large holes and missing areas due to limited field of view and occlusions. To address this gap, we introduce AnchorComplete, a framework that recovers complete scene meshes from partial point reconstructions. Our design addresses two key challenges: anchoring generation to the observed geometry and scaling completion to scenes of any extent. We introduce a <em>partial-point conditioning</em> module that guides both sparse-structure and sparse-latent generation using the input point cloud, together with <em>metric-scale coarse-to-fine generation</em>: an octree of fixed-size metric windows, each refining the layout of its coarser parent, keeps every mesh cell at 0.78 cm regardless of scene extent and recovers thin structures that a single normalized cube cannot resolve. We instantiate these designs on top of the sparse latent representation of TRELLIS. The resulting model produces complete scene meshes that remain faithful to the observed geometry, providing a more complete digital representation of the physical environment. Experiments on Replica and SCRREAM show that AnchorComplete consistently outperforms strong baselines in complete scene reconstruction, particularly under sparse-view settings.</p>
+  </details>
+  </section>
+
+  <section class="section container" id="video" aria-labelledby="video-title">
+    <div class="section-intro"><h2 id="video-title">Method video</h2><p>From image observations to point clouds, voxel structure, and complete meshes.</p></div>
+    <div class="method-video-player" id="method-video-player">
+      <video class="method-video" playsinline preload="metadata" poster="assets/method-poster.webp?v=six-input-views-v1" aria-label="AnchorComplete method video showing image observations, Stage 1 cube denoising, and the completed Stage 2 mesh"><source src="assets/anchorcomplete-method.mp4?v=mesh-ending-v1" type="video/mp4">Your browser does not support embedded video. <a href="assets/anchorcomplete-method.mp4?v=mesh-ending-v1">Download the method video.</a></video>
+      <div class="method-video-controls" role="group" aria-label="Method video controls">
+        <button class="video-play" id="method-video-play" type="button" aria-label="Play video"><span aria-hidden="true">▶</span></button>
+        <span class="video-time" id="method-video-current" aria-label="Current time">0:00</span>
+        <div class="video-seek-wrap">
+          <input class="video-seek" id="method-video-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek through method video" disabled>
+        </div>
+        <span class="video-time" id="method-video-duration" aria-label="Duration">0:00</span>
+        <button class="video-fullscreen" id="method-video-fullscreen" type="button" aria-label="View video full screen">⛶</button>
+      </div>
+    </div>
+    <p class="figure-caption">27 seconds · Six real RGB input views, overlapping Stage 1 cube denoising, and the completed Stage 2 mesh.</p>
+  </section>
+
+  <section class="section container" id="overview">
+    <div class="section-intro"><h2>Overview</h2><p>Partial reconstructions leave occluded and unobserved surfaces missing. We combine a generative 3D prior with geometric conditioning to recover complete scene meshes, and scale generation through a coarse-to-fine metric octree.</p></div>
+    <div id="overview-viewer" class="viewer-shell overview-viewer" data-appearance="overview">
+      <div class="canvas-host overview-canvas" data-label="Pipeline apartment 3D"><img id="overview-poster" class="viewer-poster" src="assets/scale-gallery/2t7WUuJeko7-input.webp" alt="Input point cloud of the pipeline apartment" loading="lazy" width="1400" height="1000"></div>
+      <div class="viewer-toolbar"><span class="viewer-status" role="status" aria-live="polite"></span><div class="viewer-actions"><button type="button" data-view-action="in" aria-label="Zoom in">+</button><button type="button" data-view-action="out" aria-label="Zoom out">−</button><button type="button" data-view-action="reset">Reset view</button><button type="button" data-view-action="fullscreen" aria-label="Toggle full screen">⛶</button></div></div>
+    </div>
+    <div class="overview-stages" role="group" aria-label="Pipeline generation stage">
+      <button data-overview-stage="0" class="selected" aria-pressed="true">Input</button><button data-overview-stage="1" aria-pressed="false">L0</button><button data-overview-stage="2" aria-pressed="false">L1</button><button data-overview-stage="3" aria-pressed="false">L2</button><button data-overview-stage="4" aria-pressed="false">Output</button>
+    </div>
+    <input class="overview-range" id="overview-range" type="range" min="0" max="4" step="1" value="0" aria-label="Slide through input, L0, L1, L2 occupancy and output">
+    <p class="figure-caption" id="overview-stage" aria-live="polite">Input point cloud</p>
+    <p class="scale-hint">Same apartment as the pipeline. The input view includes mild spatial noise. Drag to rotate · scroll or pinch to zoom · slide to explore the generation stages.</p>
+  </section>
+
+  <section class="section container" id="method">
+    <div class="section-intro"><h2>Pipeline</h2><p>Generation is anchored by the input points and refined from a global layout to local geometry.</p></div>
+    <div class="pipeline-controls" aria-label="Explore the AnchorComplete pipeline">
+      <div class="pipeline-modules" role="group" aria-label="Pipeline modules">
+        <button class="pipeline-module selected" data-pipeline-step="input" type="button" aria-pressed="true"><span>Input</span><small>Partial points</small></button>
+        <button class="pipeline-module" data-pipeline-step="stage1" type="button" aria-pressed="false"><span>Stage 1</span><small>Voxel generation</small></button>
+        <button class="pipeline-module" data-pipeline-step="stage2" type="button" aria-pressed="false"><span>Stage 2</span><small>Complete mesh</small></button>
+      </div>
+      <div class="pipeline-tour-actions"><button type="button" id="pipeline-tour">Take the tour <span aria-hidden="true">→</span></button><button type="button" id="pipeline-show-all">Show all</button></div>
+    </div>
+    <figure class="pipeline"><div class="pipeline-interactive" id="pipeline-interactive" data-highlight="input">
+      <a href="assets/pipeline.webp?v=coarse-to-fine-v1" target="_blank" rel="noopener" aria-label="Open the method diagram at full resolution"><img src="assets/pipeline.webp?v=coarse-to-fine-v1" alt="AnchorComplete pipeline: point-conditioned coarse-to-fine octree generation, followed by shape latent generation, decoding and merging" loading="lazy" width="2400" height="965"></a>
+      <button class="pipeline-hotspot pipeline-hotspot--input" data-pipeline-step="input" type="button" aria-label="Highlight input point cloud" title="Input"></button>
+      <button class="pipeline-hotspot pipeline-hotspot--stage1" data-pipeline-step="stage1" type="button" aria-label="Highlight Stage 1 voxel generation" title="Stage 1"></button>
+      <button class="pipeline-hotspot pipeline-hotspot--stage2" data-pipeline-step="stage2" type="button" aria-label="Highlight Stage 2 shape generation and output mesh" title="Stage 2 · Output"></button>
+    </div><figcaption class="figure-caption pipeline-description" id="pipeline-description" aria-live="polite">Observed points anchor generation; the following stages progressively complete the scene.</figcaption></figure>
+    <div class="method-notes"><div><h3>Partial-point conditioning</h3><p>Global anchor tokens guide both generation stages through cross-attention. Local spatial injection supplies observed geometry and visibility information directly to the generator.</p></div><div><h3>Coarse-to-fine generation</h3><p>Each finer window refines its parent's layout, conditioned on the observed points. The final shape latents are decoded, merged on a shared metric lattice, and meshed once.</p></div></div>
+  </section>
+
+  <section class="section container" id="scale" aria-labelledby="scale-title">
+    <div class="section-intro"><h2 id="scale-title">Consistent detail across scene scales</h2><p>From individual rooms to multi-room apartments. Explore partial inputs and completed meshes at the same viewpoint.</p></div>
+    <div class="scale-datasets" role="group" aria-label="Select scene dataset"><button data-scale-dataset="ScanNet++" class="selected" aria-pressed="true">ScanNet++ <span>3 scenes</span></button><button data-scale-dataset="Matterport3D" aria-pressed="false">Matterport3D <span>8 scenes</span></button></div>
+    <div class="scale-scenes" role="group" aria-label="Select reconstruction scene">
+      <button data-scale-scene="b4b39438f0" data-family="ScanNet++" class="selected" aria-pressed="true">Scene 1</button>
+      <button data-scale-scene="f34d532901" data-family="ScanNet++" aria-pressed="false">Scene 2</button>
+      <button data-scale-scene="cbd4b3055e" data-family="ScanNet++" aria-pressed="false">Scene 3</button>
+      <button data-scale-scene="2t7WUuJeko7" data-family="Matterport3D" aria-pressed="false" hidden>Scene 1</button>
+      <button data-scale-scene="17DRP5sb8fy" data-family="Matterport3D" aria-pressed="false" hidden>Scene 2</button>
+      <button data-scale-scene="RPmz2sHmrrY" data-family="Matterport3D" aria-pressed="false" hidden>Scene 3</button>
+      <button data-scale-scene="1LXtFkjw3qL" data-family="Matterport3D" aria-pressed="false" hidden>Scene 4</button>
+      <button data-scale-scene="1pXnuDYAj8r" data-family="Matterport3D" aria-pressed="false" hidden>Scene 5</button>
+      <button data-scale-scene="29hnd4uzFmX" data-family="Matterport3D" aria-pressed="false" hidden>Scene 6</button>
+      <button data-scale-scene="S9hNv5qa7GM" data-family="Matterport3D" aria-pressed="false" hidden>Scene 7</button>
+      <button data-scale-scene="zsNo4HB9uLZ" data-family="Matterport3D" aria-pressed="false" hidden>Scene 8</button>
+    </div>
+    <div id="scale-viewer" class="viewer-shell paired-viewer">
+      <div class="scale-pair">
+        <figure><figcaption>Input <span>Partial point cloud</span></figcaption><div class="canvas-host" data-label="Input point cloud 3D"><img id="scale-input" class="viewer-poster" src="assets/scale-gallery/b4b39438f0-input.webp" alt="Input point cloud of ScanNet++ Scene 1" loading="lazy" width="1400" height="1000"></div></figure>
+        <figure><figcaption>Output <span>Completed mesh</span></figcaption><div class="canvas-host" data-label="Output mesh 3D"><img id="scale-output" class="viewer-poster" src="assets/scale-gallery/b4b39438f0-output.webp" alt="Completed mesh of ScanNet++ Scene 1" loading="lazy" width="1400" height="1000"></div></figure>
+      </div>
+      <div class="viewer-toolbar"><span class="viewer-status" role="status" aria-live="polite"></span><div class="viewer-actions"><button type="button" data-view-action="in" aria-label="Zoom in">+</button><button type="button" data-view-action="out" aria-label="Zoom out">−</button><button type="button" data-view-action="reset">Reset view</button><button type="button" data-view-action="fullscreen" aria-label="Toggle full screen">⛶</button></div></div>
+    </div>
+    <p class="figure-caption" id="scale-caption" aria-live="polite">ScanNet++ · Scene 1</p>
+    <p class="scale-hint">Drag either view to rotate · scroll or pinch to zoom · right-drag to pan. Both views stay in sync.</p>
+  </section>
+
+  <section class="section container" id="comparison" aria-labelledby="comparison-title">
+    <div class="section-intro"><h2 id="comparison-title">Compare reconstruction methods</h2><p>Explore five ScanNet++ scenes reconstructed from eight views. Select a method on either side; both views share the same input and move together.</p></div>
+    <div class="scale-datasets" role="group" aria-label="Select ScanNet++ comparison scene"><button data-compare-scene="snpp-2162a7cf14" class="selected" aria-pressed="true">Scene 1</button><button data-compare-scene="snpp-1b75758486" aria-pressed="false">Scene 2</button><button data-compare-scene="snpp-16c9bd2e1e" aria-pressed="false">Scene 3</button><button data-compare-scene="snpp-5aeac3800a" aria-pressed="false">Scene 4</button><button data-compare-scene="snpp-b4b39438f0" aria-pressed="false">Scene 5</button></div>
+    <div id="method-viewer" class="viewer-shell paired-viewer" data-appearance="comparison">
+      <div class="scale-pair method-pair">
+        <figure><figcaption><label class="method-choice" for="compare-left-method">Left method<select id="compare-left-method"><option value="Input">Input</option><option value="NKSR">NKSR</option><option value="SGNN">SG-NN</option><option value="Seen2Scene" selected>Seen2Scene</option><option value="Ours">Ours</option></select></label><span id="compare-left-label">Reconstructed mesh</span></figcaption><div class="canvas-host" data-label="Left comparison method 3D"><div class="viewer-poster method-placeholder">Select a method to explore its reconstruction.</div></div></figure>
+        <figure><figcaption><label class="method-choice" for="compare-right-method">Right method<select id="compare-right-method"><option value="Input">Input</option><option value="NKSR">NKSR</option><option value="SGNN">SG-NN</option><option value="Seen2Scene">Seen2Scene</option><option value="Ours" selected>Ours</option></select></label><span id="compare-right-label">Reconstructed mesh</span></figcaption><div class="canvas-host" data-label="Right comparison method 3D"><div class="viewer-poster method-placeholder">Select a method to explore its reconstruction.</div></div></figure>
+      </div>
+      <div class="viewer-toolbar"><span class="viewer-status" role="status" aria-live="polite"></span><div class="viewer-actions"><button type="button" data-view-action="in" aria-label="Zoom in">+</button><button type="button" data-view-action="out" aria-label="Zoom out">−</button><button type="button" data-view-action="reset">Reset view</button><button type="button" data-view-action="fullscreen" aria-label="Toggle full screen">⛶</button></div></div>
+    </div>
+    <p class="figure-caption" id="method-caption" aria-live="polite">ScanNet++ · Scene 1 · 8-view GT-depth input · Seen2Scene / Ours</p>
+    <p class="scale-hint">The viewpoint stays fixed when you change methods. Drag either side to inspect geometry together.</p>
+  </section>
+
+  <section class="section container" id="results">
+    <div class="section-intro"><h2>Complete-scene reconstruction</h2><p>Four-view results for image-based generation and scene-completion methods on Replica and SCRREAM.</p></div>
+    <div class="results-controls">
+      <div class="dataset-tabs" role="group" aria-label="Select evaluation dataset"><button data-dataset="Replica" class="selected" aria-pressed="true">Replica</button><button data-dataset="SCRREAM" aria-pressed="false">SCRREAM</button></div>
+      <div class="metric-tabs" role="group" aria-label="Select metric">
+        <button data-metric="cd_vis" aria-pressed="false">CD<sub>vis</sub></button><button data-metric="cd_all" aria-pressed="false">CD<sub>all</sub></button><button data-metric="f_01" aria-pressed="false">F<sub>0.1</sub></button><button data-metric="f_005" class="selected" aria-pressed="true">F<sub>0.05</sub></button>
+      </div>
+    </div>
+    <p class="chart-direction" id="chart-direction">Higher is better · F-score over the complete scene</p>
+    <div id="results-chart" class="results-chart" role="list" aria-label="Method performance chart"></div>
+    <p class="figure-caption">Bar lengths share a zero-based scale across Replica and SCRREAM within each metric; exact scores are shown at right. Scene-level finetuning is aligned to the input cloud.</p>
+  </section>
+
+  <section class="section container citation-section" id="citation" aria-labelledby="citation-title">
+    <div class="section-intro"><h2 id="citation-title">BibTeX</h2></div>
+    <div class="citation-full"><pre><code>@inproceedings{chen2027anchorcomplete,
+  title     = {Recovering Complete Scene Meshes from Partial Point Clouds},
+  author    = {Chen, Weirong and El-Yamany, Ismail and Zhang, Ganlin and
+               Zheng, Chuanxia and Vedaldi, Andrea and Cremers, Daniel},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2027}
+}</code></pre></div>
+  </section>
+</main>
+<footer class="container"><span>AnchorComplete</span><span class="footer-disabled" aria-disabled="true" title="Temporarily unavailable">Paper</span></footer>
 </body>
 </html>

@@ -1,0 +1,41 @@
+{
+  "figure_pdf": "/storage/user/chwe/Overleaf/iclr27_anypoint2mesh/iclr27_anypoint2mesh/figures/pipeline_fig2.pdf",
+  "figure_pdf_sha256": "aa639367b7e25be97521028570daf2e9e65419c63c61880ff21d35dbeeff3535",
+  "scene": "2t7WUuJeko7",
+  "input": "eval_results/mp3d/2t7WUuJeko7/observed_df2_lv10.ply",
+  "carve_source": "eval_results/carve_src/2t7WUuJeko7_df2_n10.npz",
+  "input_points": 1269002,
+  "input_views": 20,
+  "capture_stations": 10,
+  "stage1_model": "metric_s1_clean_vis3 @40000",
+  "stage2_model": "metric_s2_issage @30000",
+  "trace": "eval_results/website_pipeline_example_frozen/2t7WUuJeko7/trace/manifest.json",
+  "recorded_stage1_calls": 48,
+  "recorded_latent_states": 624,
+  "final_mesh": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/pipeline_fig_df2/gt/MP3D/2t7WUuJeko7_cvis3/exported_texA.ply",
+  "final_mesh_note": "precomputed Figure2 reconstruction; not produced by the Stage1-only replay",
+  "figure_crop": [
+    720,
+    160,
+    -208
+  ],
+  "executed_region_window": [
+    720,
+    176,
+    -208
+  ],
+  "trace_job": "1954408",
+  "native_render_job": "1954415",
+  "compose_job": "1954427",
+  "video_seconds": 55.4,
+  "fps": 30,
+  "figure_overleaf_commit": "4172e5949d53337b32649ae4cb8ba01195e7e8cb",
+  "level_numbering": "L0 (coarse whole-scene layout) -> L1 -> L2 (fine); Stage 2 at L2",
+  "recorded_to_display_level": {
+    "2": 0,
+    "1": 1,
+    "0": 2
+  },
+  "initial_L0": "saved Figure-run parent layout, displayed as layout, not sampler states",
+  "initial_L0_recorded_source_level": 2
+}

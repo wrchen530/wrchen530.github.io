@@ -1,0 +1,74 @@
+{
+  "room": {
+    "input": {
+      "source": "docs/teaser_three_scales/renders_v19_gtns_E_rcube_ocv3_hens_finalA2/room_cloud_ov.png",
+      "resolved_source": "/storage/user/chwe/Research/Complete25/TRELLIS/docs/teaser_three_scales/renders_v17_gtns_cubefill8_lf/room_cloud_ov.png",
+      "source_sha256": "c4faf5d10e0edde59f8647805be9e08ecf3a37121142ecffcbd42f124dad4527",
+      "width": 1095,
+      "height": 649,
+      "asset": "assets/room-input.webp",
+      "background": "original transparent alpha preserved",
+      "overleaf_pdf_sha256": "7759b16aec411b5655c8542b7679303bff7bca6cc4d7da8eef0b4f533c60354c",
+      "teaser_pdf_sha256": "b61170245cdcbbfc8e373ef435b0120ca6c8929805fe6360b1dce236a8d5caf3"
+    },
+    "output": {
+      "source": "docs/teaser_three_scales/renders_v19_gtns_E_rcube_ocv3_hens_finalA2/room_mesh_ov.png",
+      "resolved_source": "/storage/user/chwe/Research/Complete25/TRELLIS/docs/teaser_three_scales/renders_v17_gtns_cubefill8_lf/room_mesh_ov.png",
+      "source_sha256": "815cfde9c90a7f4385ecb5520a8276e14bb8db7c83c7f44e8df0976032fe6ac5",
+      "width": 1095,
+      "height": 649,
+      "asset": "assets/room-output.webp",
+      "background": "original transparent alpha preserved",
+      "overleaf_pdf_sha256": "7759b16aec411b5655c8542b7679303bff7bca6cc4d7da8eef0b4f533c60354c",
+      "teaser_pdf_sha256": "b61170245cdcbbfc8e373ef435b0120ca6c8929805fe6360b1dce236a8d5caf3"
+    }
+  },
+  "office": {
+    "input": {
+      "source": "docs/teaser_three_scales/renders_v19_gtns_E_rcube_ocv3_hens_finalA2/office_cloud_ov.png",
+      "resolved_source": "/storage/user/chwe/Research/Complete25/TRELLIS/docs/teaser_three_scales/renders_v17_gtns_cvis3fill8_hole4_lf/office_cloud_ov.png",
+      "source_sha256": "e68b29b1f7f67df542889fbe9446d7a90bd2b213d0645184875fb7e65931fc59",
+      "width": 870,
+      "height": 824,
+      "asset": "assets/office-input.webp",
+      "background": "original transparent alpha preserved",
+      "overleaf_pdf_sha256": "7759b16aec411b5655c8542b7679303bff7bca6cc4d7da8eef0b4f533c60354c",
+      "teaser_pdf_sha256": "b61170245cdcbbfc8e373ef435b0120ca6c8929805fe6360b1dce236a8d5caf3"
+    },
+    "output": {
+      "source": "docs/teaser_three_scales/renders_v19_gtns_E_rcube_ocv3_hens_finalA2/office_mesh_ov.png",
+      "resolved_source": "/storage/user/chwe/Research/Complete25/TRELLIS/docs/teaser_three_scales/renders_v17_gtns_cvis3fill8_hole4_lf/office_mesh_ov.png",
+      "source_sha256": "f85f291884925e94082ab884086e7e70cb7099cd80bf44d37c77c200a54d8778",
+      "width": 870,
+      "height": 824,
+      "asset": "assets/office-output.webp",
+      "background": "original transparent alpha preserved",
+      "overleaf_pdf_sha256": "7759b16aec411b5655c8542b7679303bff7bca6cc4d7da8eef0b4f533c60354c",
+      "teaser_pdf_sha256": "b61170245cdcbbfc8e373ef435b0120ca6c8929805fe6360b1dce236a8d5caf3"
+    }
+  },
+  "house": {
+    "input": {
+      "source": "docs/teaser_three_scales/renders_v19_gtns_E_rcube_ocv3_hens_finalA2/house_cloud_ov.png",
+      "resolved_source": "/storage/user/chwe/Research/Complete25/TRELLIS/docs/teaser_three_scales/renders_v17_gtns_finalA2_2n8kARJN3HM_hex12_s-0.4_rf/house_cloud_ov.png",
+      "source_sha256": "f53665fa9838ff120c046d27708a4eacb58077651c08991335824a3ee9d27c67",
+      "width": 866,
+      "height": 894,
+      "asset": "assets/house-input.webp",
+      "background": "original transparent alpha preserved",
+      "overleaf_pdf_sha256": "7759b16aec411b5655c8542b7679303bff7bca6cc4d7da8eef0b4f533c60354c",
+      "teaser_pdf_sha256": "b61170245cdcbbfc8e373ef435b0120ca6c8929805fe6360b1dce236a8d5caf3"
+    },
+    "output": {
+      "source": "docs/teaser_three_scales/renders_v19_gtns_E_rcube_ocv3_hens_finalA2/house_mesh_ov.png",
+      "resolved_source": "/storage/user/chwe/Research/Complete25/TRELLIS/docs/teaser_three_scales/renders_v17_gtns_finalA2_2n8kARJN3HM_hex12_s-0.4_rf/house_mesh_ov.png",
+      "source_sha256": "3e1a7c926e5c5d311143ef1c70fe3e8fd5b4c4e10c644c55ec8ec91879ac4a81",
+      "width": 866,
+      "height": 894,
+      "asset": "assets/house-output.webp",
+      "background": "original transparent alpha preserved",
+      "overleaf_pdf_sha256": "7759b16aec411b5655c8542b7679303bff7bca6cc4d7da8eef0b4f533c60354c",
+      "teaser_pdf_sha256": "b61170245cdcbbfc8e373ef435b0120ca6c8929805fe6360b1dce236a8d5caf3"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "document": "docs/metric_clean_visibility_inference.md",
+  "document_sha256": "80ee4c0d4e8f3505bb3b7435459b444548beb0f2bff87dfe318d7c9d3158925c",
+  "inference_job": "1952004",
+  "inference_log": "logs/eval/mev_pipe_cvis_1952004.log",
+  "result": "eval_results/pipeline_fig_cvis3/gt/SNPP/269fa95eb3_cvis3/result.json",
+  "stage1": {
+    "run": "metric_s1_clean_vis3",
+    "step": 40000,
+    "composite": false
+  },
+  "stage2": {
+    "run": "metric_s2_issage",
+    "step": 30000
+  },
+  "carve_source": "eval_results/carve_src/269fa95eb3_n10.npz",
+  "carve_stop_m": 0.15,
+  "mesh": "eval_results/pipeline_fig_cvis3/gt/SNPP/269fa95eb3_cvis3/exported_proxy.ply",
+  "camera": "unchanged from the previous 240-frame paired walk",
+  "scope": "final large-scene paired flythrough",
+  "render_job": "1952288",
+  "verified_camera_poses": 240,
+  "video_duration_seconds": 50
+}
