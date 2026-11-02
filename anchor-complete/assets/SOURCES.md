@@ -68,3 +68,5 @@ Site identity: `anchorcomplete-mark.svg` is the flat vector logo used in the nav
 Teaser preview alignment (2026-11-02): the interactive proxy and overview render for each of Room, Office and Two-storey apartment now come from the same teaser reconstruction PLY. Preview PNG and proxy PLY hashes are recorded in scene-manifest.json and geometry/presentation-manifest.json.
 
 Opening scene gallery merge (2026-11-02): the standalone “Consistent detail across scene scales” section has been removed. The opening synchronized 3D selector now includes the original Room, Office and Two-story apartment teaser scenes, plus ScanNet++ f34d532901 (Scene 2) and Matterport3D 17DRP5sb8fy (Scene 2). Both added scenes use the existing input/output geometry, static posters and saved cameras in scale-gallery/manifest.json and geometry/manifest.json.
+
+Opening gallery labels/order (2026-11-02): Room → Office 1 → Office 2 → Apartment → Two-story apartment. Removed view and station counts from the gallery captions. The BibTeX blocks now use arXiv @misc metadata; the arXiv identifier is left pending because the Overleaf project has no arXiv number yet.

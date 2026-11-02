@@ -1,10 +1,12 @@
 'use strict';
 
 const scenes = {
-  room: { caption: 'Replica · 7.8 × 4.7 m · 10 views', name: 'Replica room', width: 1095, height: 649 },
-  office: { caption: 'ScanNet++ · 6.5 × 6.8 m · 10 views', name: 'ScanNet++ office', width: 861, height: 822 },
-  house: { caption: 'Matterport3D · Two-story apartment · 24.2 × 25.6 m · 10 views per floor', name: 'two-story Matterport3D apartment, with floors separated for visualization', width: 834, height: 931 }
+  room: { caption: 'Replica · 7.8 × 4.7 m', name: 'Replica room', width: 1095, height: 649 },
+  office: { caption: 'ScanNet++ · Office 1 · 6.5 × 6.8 m', name: 'ScanNet++ Office 1', width: 861, height: 822 },
+  house: { caption: 'Matterport3D · Two-story apartment · 24.2 × 25.6 m', name: 'two-story Matterport3D apartment, with floors separated for visualization', width: 834, height: 931 }
 };
+
+const sceneLabels = { f34d532901: 'Office 2', '17DRP5sb8fy': 'Apartment' };
 
 function select(buttons, selected) {
   buttons.forEach(button => {
@@ -22,7 +24,8 @@ function selectHeroScene(key) {
   if (!scene) return;
   const datasetScenes = gallery ? window.scaleScenes.filter(item => item.dataset === gallery.dataset) : [];
   const sceneNumber = gallery ? datasetScenes.findIndex(item => item.id === key) + 1 : 0;
-  const name = gallery ? `${gallery.dataset} Scene ${sceneNumber}` : teaser.name;
+  const label = gallery ? sceneLabels[key] || `Scene ${sceneNumber}` : teaser.name;
+  const name = gallery ? `${gallery.dataset} ${label}` : teaser.name;
   const paths = gallery
     ? { input: gallery.input_asset, output: gallery.output_asset }
     : { input: `assets/${key}-input.webp`, output: `assets/${key}-output.webp` };
@@ -33,9 +36,8 @@ function selectHeroScene(key) {
     image.height = scene.height;
     image.alt = kind === 'input' ? `Partial point cloud of ${name}` : `Completed mesh of ${name}, rendered in light blue`;
   }
-  const coverage = gallery?.input_kind.includes('stations') ? `${gallery.views} stations per level` : `${gallery?.views} views`;
   const caption = gallery
-    ? `${gallery.dataset} · Scene ${sceneNumber} · ${gallery.extent_m.slice(0, 2).map(value => value.toFixed(1)).join(' × ')} m · ${coverage}`
+    ? `${gallery.dataset} · ${label} · ${gallery.extent_m.slice(0, 2).map(value => value.toFixed(1)).join(' × ')} m`
     : teaser.caption;
   document.querySelector('#scene-caption').textContent = caption;
   select(sceneButtons, sceneButtons.find(button => button.dataset.scene === key));

@@ -7,11 +7,11 @@
   <meta name="theme-color" content="#ffffff">
   <title>AnchorComplete | Complete Scene Meshes from Partial Point Clouds</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=merged-scene-gallery-v1">
+  <link rel="stylesheet" href="styles.css?v=merged-scene-gallery-v2">
   <script src="scale-scenes.js?v=mp3d-candidates-v1" defer></script>
-  <script src="app.js?v=merged-scene-gallery-v1" defer></script>
+  <script src="app.js?v=merged-scene-gallery-v2" defer></script>
   <script src="web-geometry.js?v=teaser-final-mesh-v10" defer></script>
-  <script type="module" src="viewer-3d.js?v=merged-scene-gallery-v1"></script>
+  <script type="module" src="viewer-3d.js?v=merged-scene-gallery-v2"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -31,22 +31,24 @@
       <span class="paper-button code-button is-disabled" aria-disabled="true" title="Repository URL not set">Code</span>
       <details class="citation-block">
         <summary>BibTeX</summary>
-        <pre><code>@inproceedings{chen2027anchorcomplete,
-  title     = {Recovering Complete Scene Meshes from Partial Point Clouds},
-  author    = {Chen, Weirong and El-Yamany, Ismail and Zhang, Ganlin and
-               Zheng, Chuanxia and Vedaldi, Andrea and Cremers, Daniel},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  year      = {2027}
+        <pre><code>@misc{chen2026anchorcomplete,
+  title         = {Recovering Complete Scene Meshes from Partial Point Clouds},
+  author        = {Chen, Weirong and El-Yamany, Ismail and Zhang, Ganlin and
+                   Zheng, Chuanxia and Vedaldi, Andrea and Cremers, Daniel},
+  year          = {2026},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  note          = {arXiv preprint; identifier to be added}
 }</code></pre>
       </details>
     </div>
     <div class="hero-gallery" id="reconstructions">
       <div class="scene-tabs" role="group" aria-label="Select reconstruction scene">
         <button data-scene="room" class="selected" aria-pressed="true">Room</button>
-        <button data-scene="office" aria-pressed="false">Office</button>
+        <button data-scene="office" aria-pressed="false">Office 1</button>
+        <button data-scene="f34d532901" aria-pressed="false">Office 2</button>
+        <button data-scene="17DRP5sb8fy" aria-pressed="false">Apartment</button>
         <button data-scene="house" aria-pressed="false">Two-story apartment</button>
-        <button data-scene="f34d532901" aria-pressed="false">ScanNet++ · Scene 2</button>
-        <button data-scene="17DRP5sb8fy" aria-pressed="false">Matterport3D · Scene 2</button>
       </div>
       <div id="teaser-viewer" class="viewer-shell paired-viewer teaser-viewer">
         <div class="hero-pair">
@@ -55,7 +57,7 @@
         </div>
         <div class="viewer-toolbar"><span class="viewer-status" role="status" aria-live="polite"></span><div class="viewer-actions"><button type="button" data-view-action="in" aria-label="Zoom in">+</button><button type="button" data-view-action="out" aria-label="Zoom out">−</button><button type="button" data-view-action="reset">Reset view</button><button type="button" data-view-action="fullscreen" aria-label="Toggle full screen">⛶</button></div></div>
       </div>
-      <p class="figure-caption" id="scene-caption">Replica · 7.8 × 4.7 m · 10 views</p>
+      <p class="figure-caption" id="scene-caption">Replica · 7.8 × 4.7 m</p>
       <p class="sample-note">Drag either view to explore · scroll or pinch to zoom · both cameras stay in sync.</p>
     </div>
     <p class="lead" id="tldr"><strong>TL;DR</strong> AnchorComplete turns partial point clouds into complete scene meshes, preserves observed geometry, and scales from individual rooms to large multi-room scenes through metric-scale coarse-to-fine generation.</p>
@@ -146,12 +148,14 @@
 
   <section class="section container citation-section" id="citation" aria-labelledby="citation-title">
     <div class="section-intro"><h2 id="citation-title">BibTeX</h2></div>
-    <div class="citation-full"><pre><code>@inproceedings{chen2027anchorcomplete,
-  title     = {Recovering Complete Scene Meshes from Partial Point Clouds},
-  author    = {Chen, Weirong and El-Yamany, Ismail and Zhang, Ganlin and
-               Zheng, Chuanxia and Vedaldi, Andrea and Cremers, Daniel},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  year      = {2027}
+    <div class="citation-full"><pre><code>@misc{chen2026anchorcomplete,
+  title         = {Recovering Complete Scene Meshes from Partial Point Clouds},
+  author        = {Chen, Weirong and El-Yamany, Ismail and Zhang, Ganlin and
+                   Zheng, Chuanxia and Vedaldi, Andrea and Cremers, Daniel},
+  year          = {2026},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  note          = {arXiv preprint; identifier to be added}
 }</code></pre></div>
   </section>
 </main>
