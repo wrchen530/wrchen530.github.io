@@ -52,7 +52,8 @@ h1 { margin: 0; font-size: 58px; font-weight: 650; letter-spacing: -2.6px; line-
 .citation-full { max-width: 790px; margin: 0 auto; }
 .citation-full pre { margin: 0; padding: 18px 20px; overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: #f8fafb; color: #48535c; white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.75 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 .hero-gallery { margin-top: 43px; }
-.scene-tabs, .level-tabs, .dataset-tabs { display: flex; justify-content: center; gap: 27px; }
+.scene-tabs, .level-tabs, .dataset-tabs { display: flex; justify-content: center; gap: 8px 24px; }
+.scene-tabs { flex-wrap: wrap; }
 .scene-tabs button, .level-tabs button, .dataset-tabs button { border: 0; border-bottom: 1px solid transparent; background: transparent; padding: 6px 1px 8px; font-size: 13px; color: #858b90; }
 .scene-tabs button.selected, .level-tabs button.selected, .dataset-tabs button.selected { color: var(--accent); border-bottom-color: var(--accent); }
 .scene-tabs button:hover, .level-tabs button:hover, .dataset-tabs button:hover { color: var(--accent); }
@@ -190,7 +191,7 @@ footer .footer-disabled { color: #b5bbc0; cursor: not-allowed; }
   .affiliations span { display: block; margin: 0; }
   .affiliations br { display: none; }
   .hero-gallery { margin-top: 35px; }
-  .scene-tabs { gap: 25px; }
+  .scene-tabs { gap: 6px 14px; }
   .scene-tabs button { font-size: 12px; }
   .hero-pair { gap: 14px; margin-top: 22px; }
   .hero-pair figcaption { font-size: 12px; }

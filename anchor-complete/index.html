@@ -7,11 +7,11 @@
   <meta name="theme-color" content="#ffffff">
   <title>AnchorComplete | Complete Scene Meshes from Partial Point Clouds</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=paper-code-links-v1">
+  <link rel="stylesheet" href="styles.css?v=merged-scene-gallery-v1">
   <script src="scale-scenes.js?v=mp3d-candidates-v1" defer></script>
-  <script src="app.js?v=mp3d-candidates-v1" defer></script>
+  <script src="app.js?v=merged-scene-gallery-v1" defer></script>
   <script src="web-geometry.js?v=teaser-final-mesh-v10" defer></script>
-  <script type="module" src="viewer-3d.js?v=static-poster-fallback-v1"></script>
+  <script type="module" src="viewer-3d.js?v=merged-scene-gallery-v1"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -41,7 +41,13 @@
       </details>
     </div>
     <div class="hero-gallery" id="reconstructions">
-      <div class="scene-tabs" role="group" aria-label="Select scene scale"><button data-scene="room" class="selected" aria-pressed="true">Room</button><button data-scene="office" aria-pressed="false">Office</button><button data-scene="house" aria-pressed="false">Two-story apartment</button></div>
+      <div class="scene-tabs" role="group" aria-label="Select reconstruction scene">
+        <button data-scene="room" class="selected" aria-pressed="true">Room</button>
+        <button data-scene="office" aria-pressed="false">Office</button>
+        <button data-scene="house" aria-pressed="false">Two-story apartment</button>
+        <button data-scene="f34d532901" aria-pressed="false">ScanNet++ · Scene 2</button>
+        <button data-scene="17DRP5sb8fy" aria-pressed="false">Matterport3D · Scene 2</button>
+      </div>
       <div id="teaser-viewer" class="viewer-shell paired-viewer teaser-viewer">
         <div class="hero-pair">
           <figure><figcaption>Input <span>Partial point cloud</span></figcaption><div class="hero-image canvas-host" data-label="Teaser input point cloud 3D"><img id="hero-input" class="viewer-poster" src="assets/room-input.webp" alt="Partial point cloud of the Replica room" width="1095" height="649"></div></figure>
@@ -109,33 +115,6 @@
       <button class="pipeline-hotspot pipeline-hotspot--stage2" data-pipeline-step="stage2" type="button" aria-label="Highlight Stage 2 shape generation and output mesh" title="Stage 2 · Output"></button>
     </div><figcaption class="figure-caption pipeline-description" id="pipeline-description" aria-live="polite">Observed points anchor generation; the following stages progressively complete the scene.</figcaption></figure>
     <div class="method-notes"><div><h3>Partial-point conditioning</h3><p>Global anchor tokens guide both generation stages through cross-attention. Local spatial injection supplies observed geometry and visibility information directly to the generator.</p></div><div><h3>Coarse-to-fine generation</h3><p>Each finer window refines its parent's layout, conditioned on the observed points. The final shape latents are decoded, merged on a shared metric lattice, and meshed once.</p></div></div>
-  </section>
-
-  <section class="section container" id="scale" aria-labelledby="scale-title">
-    <div class="section-intro"><h2 id="scale-title">Consistent detail across scene scales</h2><p>From individual rooms to multi-room apartments. Explore partial inputs and completed meshes at the same viewpoint.</p></div>
-    <div class="scale-datasets" role="group" aria-label="Select scene dataset"><button data-scale-dataset="ScanNet++" class="selected" aria-pressed="true">ScanNet++ <span>3 scenes</span></button><button data-scale-dataset="Matterport3D" aria-pressed="false">Matterport3D <span>8 scenes</span></button></div>
-    <div class="scale-scenes" role="group" aria-label="Select reconstruction scene">
-      <button data-scale-scene="b4b39438f0" data-family="ScanNet++" class="selected" aria-pressed="true">Scene 1</button>
-      <button data-scale-scene="f34d532901" data-family="ScanNet++" aria-pressed="false">Scene 2</button>
-      <button data-scale-scene="cbd4b3055e" data-family="ScanNet++" aria-pressed="false">Scene 3</button>
-      <button data-scale-scene="2t7WUuJeko7" data-family="Matterport3D" aria-pressed="false" hidden>Scene 1</button>
-      <button data-scale-scene="17DRP5sb8fy" data-family="Matterport3D" aria-pressed="false" hidden>Scene 2</button>
-      <button data-scale-scene="RPmz2sHmrrY" data-family="Matterport3D" aria-pressed="false" hidden>Scene 3</button>
-      <button data-scale-scene="1LXtFkjw3qL" data-family="Matterport3D" aria-pressed="false" hidden>Scene 4</button>
-      <button data-scale-scene="1pXnuDYAj8r" data-family="Matterport3D" aria-pressed="false" hidden>Scene 5</button>
-      <button data-scale-scene="29hnd4uzFmX" data-family="Matterport3D" aria-pressed="false" hidden>Scene 6</button>
-      <button data-scale-scene="S9hNv5qa7GM" data-family="Matterport3D" aria-pressed="false" hidden>Scene 7</button>
-      <button data-scale-scene="zsNo4HB9uLZ" data-family="Matterport3D" aria-pressed="false" hidden>Scene 8</button>
-    </div>
-    <div id="scale-viewer" class="viewer-shell paired-viewer">
-      <div class="scale-pair">
-        <figure><figcaption>Input <span>Partial point cloud</span></figcaption><div class="canvas-host" data-label="Input point cloud 3D"><img id="scale-input" class="viewer-poster" src="assets/scale-gallery/b4b39438f0-input.webp" alt="Input point cloud of ScanNet++ Scene 1" loading="lazy" width="1400" height="1000"></div></figure>
-        <figure><figcaption>Output <span>Completed mesh</span></figcaption><div class="canvas-host" data-label="Output mesh 3D"><img id="scale-output" class="viewer-poster" src="assets/scale-gallery/b4b39438f0-output.webp" alt="Completed mesh of ScanNet++ Scene 1" loading="lazy" width="1400" height="1000"></div></figure>
-      </div>
-      <div class="viewer-toolbar"><span class="viewer-status" role="status" aria-live="polite"></span><div class="viewer-actions"><button type="button" data-view-action="in" aria-label="Zoom in">+</button><button type="button" data-view-action="out" aria-label="Zoom out">−</button><button type="button" data-view-action="reset">Reset view</button><button type="button" data-view-action="fullscreen" aria-label="Toggle full screen">⛶</button></div></div>
-    </div>
-    <p class="figure-caption" id="scale-caption" aria-live="polite">ScanNet++ · Scene 1</p>
-    <p class="scale-hint">Drag either view to rotate · scroll or pinch to zoom · right-drag to pan. Both views stay in sync.</p>
   </section>
 
   <section class="section container" id="comparison" aria-labelledby="comparison-title">

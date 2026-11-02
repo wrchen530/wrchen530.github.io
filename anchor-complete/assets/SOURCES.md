@@ -66,3 +66,5 @@ Lossless web transport (2026-10-28): source geometry coordinates and every trian
 Site identity: `anchorcomplete-mark.svg` is the flat vector logo used in the navigation and `favicon.svg`. It follows the existing isometric cube mark, with sparse points on the left half and a light triangular mesh on the right half.
 
 Teaser preview alignment (2026-11-02): the interactive proxy and overview render for each of Room, Office and Two-storey apartment now come from the same teaser reconstruction PLY. Preview PNG and proxy PLY hashes are recorded in scene-manifest.json and geometry/presentation-manifest.json.
+
+Opening scene gallery merge (2026-11-02): the standalone “Consistent detail across scene scales” section has been removed. The opening synchronized 3D selector now includes the original Room, Office and Two-story apartment teaser scenes, plus ScanNet++ f34d532901 (Scene 2) and Matterport3D 17DRP5sb8fy (Scene 2). Both added scenes use the existing input/output geometry, static posters and saved cameras in scale-gallery/manifest.json and geometry/manifest.json.

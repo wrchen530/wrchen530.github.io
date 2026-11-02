@@ -15,55 +15,33 @@ function select(buttons, selected) {
 }
 
 const sceneButtons = [...document.querySelectorAll('[data-scene]')];
-sceneButtons.forEach(button => button.addEventListener('click', () => {
-  const key = button.dataset.scene;
-  const scene = scenes[key];
+function selectHeroScene(key) {
+  const teaser = scenes[key];
+  const gallery = window.scaleScenes.find(item => item.id === key);
+  const scene = teaser || gallery;
+  if (!scene) return;
+  const datasetScenes = gallery ? window.scaleScenes.filter(item => item.dataset === gallery.dataset) : [];
+  const sceneNumber = gallery ? datasetScenes.findIndex(item => item.id === key) + 1 : 0;
+  const name = gallery ? `${gallery.dataset} Scene ${sceneNumber}` : teaser.name;
+  const paths = gallery
+    ? { input: gallery.input_asset, output: gallery.output_asset }
+    : { input: `assets/${key}-input.webp`, output: `assets/${key}-output.webp` };
   for (const kind of ['input', 'output']) {
     const image = document.querySelector(`#hero-${kind}`);
-    image.src = `assets/${key}-${kind}.webp`;
+    image.src = paths[kind];
     image.width = scene.width;
     image.height = scene.height;
-    image.alt = kind === 'input' ? `Partial point cloud of the ${scene.name}, with input camera poses shown` : `Completed mesh of the same ${scene.name}, rendered in light blue`;
+    image.alt = kind === 'input' ? `Partial point cloud of ${name}` : `Completed mesh of ${name}, rendered in light blue`;
   }
-  document.querySelector('#scene-caption').textContent = scenes[key].caption;
-  select(sceneButtons, button);
-  window.dispatchEvent(new CustomEvent('teaser-scene-change', { detail: key }));
-}));
-
-const scaleSceneButtons = [...document.querySelectorAll('[data-scale-scene]')];
-const scaleDatasetButtons = [...document.querySelectorAll('[data-scale-dataset]')];
-const scaleSelection = { 'ScanNet++': 'b4b39438f0', Matterport3D: '2t7WUuJeko7' };
-function showScaleScene(id) {
-  const scene = window.scaleScenes.find(item => item.id === id);
-  if (!scene) return;
-  const hasLiveGeometry = window.webGeometry?.scenes.some(item => item.id === id);
-  const sceneNumber = window.scaleScenes.filter(item => item.dataset === scene.dataset).findIndex(item => item.id === id) + 1;
-  const sceneLabel = `Scene ${sceneNumber}`;
-  scaleSelection[scene.dataset] = id;
-  select(scaleSceneButtons, scaleSceneButtons.find(button => button.dataset.scaleScene === id));
-  for (const kind of ['input', 'output']) {
-    const path = scene[kind + '_asset'];
-    const image = document.querySelector('#scale-' + kind);
-    image.src = path;
-    image.alt = `${kind === 'input' ? 'Partial input point cloud' : 'Completed mesh'} of ${scene.dataset} ${sceneLabel}`;
-
-  }
-  window.dispatchEvent(new CustomEvent('scale-scene-change', { detail: id }));
-  const extent = scene.extent_m.slice(0, 2).map(value => value.toFixed(1)).join(' × ');
-  const count = scene.input_kind.includes('stations') ? `${scene.views} stations per level` : `${scene.views} views`;
-  document.querySelector('#scale-caption').textContent = `${scene.dataset} · ${sceneLabel} · ${extent} m · ${count}`;
-  document.querySelector('#scale .scale-hint').textContent = hasLiveGeometry
-    ? 'Drag either view to rotate · scroll or pinch to zoom · right-drag to pan. Both views stay in sync.'
-    : 'Saved cvis3 input and Ours previews · static views for this candidate.';
+  const coverage = gallery?.input_kind.includes('stations') ? `${gallery.views} stations per level` : `${gallery?.views} views`;
+  const caption = gallery
+    ? `${gallery.dataset} · Scene ${sceneNumber} · ${gallery.extent_m.slice(0, 2).map(value => value.toFixed(1)).join(' × ')} m · ${coverage}`
+    : teaser.caption;
+  document.querySelector('#scene-caption').textContent = caption;
+  select(sceneButtons, sceneButtons.find(button => button.dataset.scene === key));
+  window.dispatchEvent(new CustomEvent('hero-scene-change', { detail: key }));
 }
-scaleSceneButtons.forEach(button => button.addEventListener('click', () => showScaleScene(button.dataset.scaleScene)));
-scaleDatasetButtons.forEach(button => button.addEventListener('click', () => {
-  const dataset = button.dataset.scaleDataset;
-  select(scaleDatasetButtons, button);
-  scaleSceneButtons.forEach(scene => { scene.hidden = scene.dataset.family !== dataset; });
-  showScaleScene(scaleSelection[dataset]);
-}));
-showScaleScene('b4b39438f0');
+sceneButtons.forEach(button => button.addEventListener('click', () => selectHeroScene(button.dataset.scene)));
 
 // ICLR manuscript Table 1, limited to image-based generation and scene completion.
 const results = [

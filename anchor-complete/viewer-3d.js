@@ -392,11 +392,10 @@ class SyncedViewer {
 }
 
 const geometry = window.webGeometry;
-const pairedShell = document.querySelector('#scale-viewer');
 const overviewShell = document.querySelector('#overview-viewer');
 const teaserShell = document.querySelector('#teaser-viewer');
 const comparisonShell = document.querySelector('#method-viewer');
-let paired, overview, teaser, comparison, activeScene, activeTeaser = 'room', activeStage = 0;
+let overview, teaser, comparison, activeHeroScene = 'room', activeStage = 0;
 let comparisonId = 'snpp-2162a7cf14';
 // Presentation levels increase with refinement; source filenames retain their original recorded numbering.
 const stages = ['Input point cloud', 'L0 · Coarse occupancy', 'L1 · Intermediate occupancy', 'L2 · Fine occupancy', 'Output mesh'];
@@ -499,22 +498,19 @@ document.querySelector('#pipeline-tour').addEventListener('click', event => {
 renderPipelineState();
 document.querySelector('#overview-range').addEventListener('input', event => setOverviewStage(event.target.value));
 document.querySelectorAll('[data-overview-stage]').forEach(button => button.addEventListener('click', () => setOverviewStage(button.dataset.overviewStage)));
-window.addEventListener('scale-scene-change', event => {
-  activeScene = event.detail;
-  if (paired) {
-    const scene = geometry.scenes.find(item => item.id === activeScene);
-    if (scene) paired.show([scene.input, scene.output], scene.camera);
-    else paired.showPosters('Static preview · drag to explore is unavailable for this scene.');
-  }
-});
+function heroRecords(key) {
+  const teaserScene = geometry.teasers.find(item => item.id === key);
+  if (teaserScene) return teaserScene;
+  return geometry.scenes.find(item => item.id === key);
+}
 
-window.addEventListener('teaser-scene-change', event => {
-  activeTeaser = event.detail;
-  if (teaser) {
-    const scene = geometry.teasers.find(item => item.id === activeTeaser);
-    teaser.show([scene.input, scene.output], scene.camera);
-  }
-});
+function showHeroScene(key, retainCamera = false) {
+  activeHeroScene = key;
+  const scene = heroRecords(key);
+  if (scene && teaser) teaser.show([scene.input, scene.output], scene.camera, retainCamera && teaserShell.classList.contains('is-ready'));
+}
+
+window.addEventListener('hero-scene-change', event => showHeroScene(event.detail));
 
 function showComparison(retainCamera = false) {
   const scene = geometry.comparisons.find(item => item.id === comparisonId);
@@ -541,27 +537,19 @@ const observer = new IntersectionObserver(entries => {
     if (!entry.isIntersecting) continue;
     observer.unobserve(entry.target);
     try {
-      if (entry.target === pairedShell) {
-        paired = new SyncedViewer(pairedShell);
-        const id = activeScene || document.querySelector('[data-scale-scene].selected').dataset.scaleScene;
-        const scene = geometry.scenes.find(item => item.id === id);
-        if (scene) paired.show([scene.input, scene.output], scene.camera);
-        else paired.showPosters('Static preview · drag to explore is unavailable for this scene.');
-      } else if (entry.target === overviewShell) {
+      if (entry.target === overviewShell) {
         overview = new SyncedViewer(overviewShell); setOverviewStage(activeStage);
       } else if (entry.target === teaserShell) {
         teaser = new SyncedViewer(teaserShell);
-        activeTeaser = document.querySelector('[data-scene].selected')?.dataset.scene || activeTeaser;
-        const scene = geometry.teasers.find(item => item.id === activeTeaser);
-        teaser.show([scene.input, scene.output], scene.camera);
+        activeHeroScene = document.querySelector('[data-scene].selected')?.dataset.scene || activeHeroScene;
+        showHeroScene(activeHeroScene);
       } else {
         comparison = new SyncedViewer(comparisonShell); showComparison();
       }
-      window.anchor3D = { get paired() { return paired; }, get overview() { return overview; }, get teaser() { return teaser; }, get comparison() { return comparison; } };
+      window.anchor3D = { get overview() { return overview; }, get teaser() { return teaser; }, get comparison() { return comparison; } };
     } catch (error) {
       entry.target.querySelector('.viewer-status').textContent = '3D is unavailable in this browser. Static preview shown.';
     }
   }
 }, { rootMargin: '200px' });
-observer.observe(pairedShell); observer.observe(overviewShell);
-observer.observe(teaserShell); observer.observe(comparisonShell);
+observer.observe(overviewShell); observer.observe(teaserShell); observer.observe(comparisonShell);
