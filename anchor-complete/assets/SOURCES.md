@@ -72,3 +72,5 @@ Opening scene gallery merge (2026-11-02): the standalone “Consistent detail ac
 Opening gallery labels/order (2026-11-02): Room → Office 1 → Office 2 → Apartment → Two-story apartment. Removed view and station counts from the gallery captions. The BibTeX blocks now use arXiv @misc metadata; the arXiv identifier is left pending because the Overleaf project has no arXiv number yet.
 
 Two-story apartment input refresh (2026-11-02): the interactive point cloud uses an 80,000-point deterministic subset of `observed_gtns_lvpick2.ply`, matching the current Overleaf teaser's 55-station selection (`stations_lvpick2.npy`), `z=-0.4` storey split and 12 m upper-floor lift. It replaces the older 10-station proxy and reduces the cropped input from 586,006 to 80,000 display points. Source hash and counts are recorded in `geometry/presentation-manifest.json`.
+
+Paper PDF (2026-11-02): `anchorcomplete-paper-9446aab.pdf` is the latest compiled `iclr2027_conference.pdf` from the Overleaf project at commit `9446aab` (20 pages; SHA256 `f72cf0d767beb1a6f494c36556ab9f554378ad22ebafc007ee5260fe1c124239`). The Paper links open this PDF in a new tab.
