@@ -2147,18 +2147,18 @@
         "split_z": -0.4,
         "upper_floor_lift_m": 12,
         "model": "original paper teaser: IS single cube S1/S2@40000,10 noisy GT views",
-        "url": "assets/geometry/teaser-house-input-v14.bin",
-        "bytes": 2638049,
-        "points": 260000,
+        "url": "assets/geometry/teaser-house-input-v15.bin",
+        "bytes": 848651,
+        "points": 80000,
         "cropped_source_points": 586006,
-        "sampling": "seed42 subset of current Overleaf teaser input points",
+        "sampling": "seed42 subset of 586006 teaser input points; 80000-point display cap",
         "source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/2n8kARJN3HM/observed_gtns_lvpick2.ply",
         "source_sha256": "175f100baab172183fa7f402950825cfa8281029cc5c42b89a2f8567891d04b7",
         "camera_lines": [],
         "display_transport": {
           "codec": "morton-xor-byteplanes-v1",
           "lossless_geometry": true,
-          "decoded_position_sha256": "9f0e820819d01a2547a732f0b594a452c247de7512ae6c401a0b9d689cadea7f"
+          "decoded_position_sha256": "dac8669039e0023a6c101e0435518b8d92926e78dade84d3edf9076a42b5149e"
         }
       },
       "output": {

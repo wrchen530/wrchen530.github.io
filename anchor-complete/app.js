@@ -28,7 +28,7 @@ function selectHeroScene(key) {
   const name = gallery ? `${gallery.dataset} ${label}` : teaser.name;
   const paths = gallery
     ? { input: gallery.input_asset, output: gallery.output_asset }
-    : { input: `assets/${key}-input.webp${key === 'house' ? '?v=teaser-input-v14' : ''}`, output: `assets/${key}-output.webp` };
+    : { input: `assets/${key}-input.webp${key === 'house' ? '?v=teaser-input-v15' : ''}`, output: `assets/${key}-output.webp` };
   for (const kind of ['input', 'output']) {
     const image = document.querySelector(`#hero-${kind}`);
     image.src = paths[kind];
