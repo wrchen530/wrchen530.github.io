@@ -71,4 +71,4 @@ Opening scene gallery merge (2026-11-02): the standalone “Consistent detail ac
 
 Opening gallery labels/order (2026-11-02): Room → Office 1 → Office 2 → Apartment → Two-story apartment. Removed view and station counts from the gallery captions. The BibTeX blocks now use arXiv @misc metadata; the arXiv identifier is left pending because the Overleaf project has no arXiv number yet.
 
-Two-story apartment input refresh (2026-11-02): the interactive point cloud now uses the latest `observed_gtns_lvpick2x.ply`; it replaces the older `observed_gtns_lv10.ply` proxy. The teaser mesh and exploded-floor framing are unchanged. Source hash and point counts are recorded in `geometry/presentation-manifest.json`.
+Two-story apartment input refresh (2026-11-02): the interactive point cloud now uses `observed_gtns_lvpick2.ply`, matching the current Overleaf teaser's 55-station selection (`stations_lvpick2.npy`). It replaces the older 10-station `observed_gtns_lv10.ply` proxy. Source hash and point counts are recorded in `geometry/presentation-manifest.json`.

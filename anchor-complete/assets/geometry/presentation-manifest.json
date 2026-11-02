@@ -1766,18 +1766,18 @@
         "split_z": -0.08,
         "upper_floor_lift_m": 12,
         "model": "original paper teaser: IS single cube S1/S2@40000,10 noisy GT views",
-        "url": "assets/geometry/teaser-house-input-v11.bin",
-        "bytes": 2632401,
+        "url": "assets/geometry/teaser-house-input-v12.bin",
+        "bytes": 2631750,
         "points": 260000,
-        "cropped_source_points": 603751,
-        "sampling": "seed42 subset of latest teaser input points",
-        "source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/2n8kARJN3HM/observed_gtns_lvpick2x.ply",
-        "source_sha256": "4053c1d13b5c15a79066933d8ac139311b57c444ae1286025975d33e9755e770",
+        "cropped_source_points": 578121,
+        "sampling": "seed42 subset of current Overleaf teaser input points",
+        "source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/2n8kARJN3HM/observed_gtns_lvpick2.ply",
+        "source_sha256": "175f100baab172183fa7f402950825cfa8281029cc5c42b89a2f8567891d04b7",
         "camera_lines": [],
         "display_transport": {
           "codec": "morton-xor-byteplanes-v1",
           "lossless_geometry": true,
-          "decoded_position_sha256": "32b29832fb1c04e354adf35c166e624a191d16dbcb7024a809d04203ec655a98"
+          "decoded_position_sha256": "8b57c80f39dda1edc2a11589e33bf6f981643977d1de14ef490b2ee2f7fdf4bf"
         }
       },
       "output": {
