@@ -142,11 +142,6 @@ async function loadGeometry(record, signal) {
     }
     geometry.setAttribute('color', new THREE.BufferAttribute(linear, 3));
     const object = new THREE.Points(geometry, new THREE.PointsMaterial({ size: .019, vertexColors: true, sizeAttenuation: true, toneMapped: false }));
-    if (header.camera_lines?.length) {
-      const lines = new THREE.BufferGeometry();
-      lines.setAttribute('position', new THREE.Float32BufferAttribute(header.camera_lines.flat(), 3));
-      object.add(new THREE.LineSegments(lines, new THREE.LineBasicMaterial({ color: 0xd55e00, toneMapped: false })));
-    }
     return object;
   }
   if (!geometry.attributes.normal) geometry.computeVertexNormals();

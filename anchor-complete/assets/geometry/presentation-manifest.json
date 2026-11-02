@@ -1758,14 +1758,6 @@
         "fov": 30
       },
       "input": {
-        "url": "assets/geometry/teaser-house-input-v10.bin",
-        "bytes": 2542455,
-        "points": 260000,
-        "cropped_source_points": 571635,
-        "sampling": "seed42 subset of source points",
-        "camera_lines": [],
-        "source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/2n8kARJN3HM/observed_gtns_lv10.ply",
-        "source_sha256": "3caa041e0ff46e30f00fa9299a24b645985cb2a579e207d584aa4546664903a6",
         "ceil_m": 2.3,
         "floors": [
           -3.725125312805176,
@@ -1774,10 +1766,18 @@
         "split_z": -0.08,
         "upper_floor_lift_m": 12,
         "model": "original paper teaser: IS single cube S1/S2@40000,10 noisy GT views",
+        "url": "assets/geometry/teaser-house-input-v11.bin",
+        "bytes": 2632401,
+        "points": 260000,
+        "cropped_source_points": 603751,
+        "sampling": "seed42 subset of latest teaser input points",
+        "source": "/storage/user/chwe/Research/Complete25/TRELLIS/eval_results/mp3d/2n8kARJN3HM/observed_gtns_lvpick2x.ply",
+        "source_sha256": "4053c1d13b5c15a79066933d8ac139311b57c444ae1286025975d33e9755e770",
+        "camera_lines": [],
         "display_transport": {
           "codec": "morton-xor-byteplanes-v1",
           "lossless_geometry": true,
-          "decoded_position_sha256": "42b9bc787c0454e801612e08cc00be0959c40768404293215220e0a45e3667f0"
+          "decoded_position_sha256": "32b29832fb1c04e354adf35c166e624a191d16dbcb7024a809d04203ec655a98"
         }
       },
       "output": {
