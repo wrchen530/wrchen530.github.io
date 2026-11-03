@@ -159,7 +159,7 @@
         <!--
           To add a paper, copy one full <article class="publication-card"> (newest first).
           Each card = <a class="publication-media"> with a static <img> and an optional
-          hover <img class="media-animated">, then <div class="publication-copy"> with
+          hover <video class="media-animated">, then <div class="publication-copy"> with
           <p class="venue-tags"> (<span class="venue-tag"> e.g. "ICCV 2025", optional <span class="award-tag">),
           <h3> title link, <p class="authors">, <p class="resource-links">
           (links joined by " / "), and <p class="summary"> description.
@@ -167,13 +167,16 @@
         <div class="publication-list">
           <article class="publication-card">
             <a class="publication-media media-contain" href="anchor-complete/" aria-label="Open the AnchorComplete project page">
-              <img loading="lazy" src="images/anchorcomplete_teaser.png" alt="AnchorComplete teaser showing partial point-cloud inputs and completed meshes for three scenes">
+              <img loading="lazy" src="images/anchorcomplete_pipeline_thumb.webp" alt="Matterport3D apartment partial point cloud and completed AnchorComplete mesh">
+              <video class="media-animated" muted loop playsinline preload="metadata" poster="images/anchorcomplete_pipeline_thumb.webp" aria-hidden="true" tabindex="-1" data-hover-preview>
+                <source src="images/anchorcomplete_pipeline_hover.mp4" type="video/mp4">
+              </video>
             </a>
             <div class="publication-copy">
               <p class="venue-tags"><span class="venue-tag">arXiv</span></p>
               <h3><a href="anchor-complete/">AnchorComplete: Recovering Complete Scene Meshes from Partial Point Clouds</a></h3>
               <p class="authors"><strong>Weirong Chen</strong>, Ismail El-Yamany, Ganlin Zhang, Chuanxia Zheng, Andrea Vedaldi, Daniel Cremers</p>
-              <p class="resource-links"><a href="anchor-complete/assets/anchorcomplete-paper-9446aab.pdf">Preprint</a> / <a href="anchor-complete/">Project Page</a></p>
+              <p class="resource-links"><a href="https://arxiv.org/abs/2611.03228">arXiv</a> / <a href="anchor-complete/assets/anchorcomplete-paper-9446aab.pdf">Preprint</a> / <a href="anchor-complete/">Project Page</a></p>
               <p class="summary">A generative framework for recovering complete, metric-scale scene meshes from partial point clouds, with point-conditioned generation and coarse-to-fine completion across scene scales.</p>
             </div>
           </article>
@@ -421,6 +424,7 @@
     </footer>
     </div>
   </div>
+  <script src="research-media-hover.js" defer></script>
 </body>
 
 </html>
