@@ -20,6 +20,6 @@ See `assets/SOURCES.md` for media provenance. Research numbers come from Table 1
 of the specified current ICLR manuscript. The hero uses pre-rendered geometry;
 it is a scene selector, not an orbitable 3D viewer.
 
-The current video is `assets/anchorcomplete-method.mp4`, the 45 s overview cut built by `website/video/build_social_media_cut.py` in the TRELLIS repo; see `assets/SOURCES.md`.
+The current video is `assets/anchorcomplete-method.mp4`, the 58 s overview cut built by `website/video/build_social_media_cut.py` in the TRELLIS repo; see `assets/SOURCES.md`.
 
 Sequential rendering: `video/render_sequential_stage1.sbatch`; accumulation logic: `video/sequential_stage1.py`; exact video window timing: `assets/animation-sequence.json`.

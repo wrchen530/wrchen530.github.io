@@ -9,7 +9,7 @@ Current hero: paired *_cloud_ov.png / *_mesh_ov.png from docs/teaser_three_scale
 
 Method video: video/make_animation.py, 45 s, 1920x1080 at 30 fps. See video/sources.json for exact reference image, occupancy, mesh and flythrough sources. This is an explanatory animation, not one recorded denoising trajectory.
 
-Current online video (45 s, 1920×1080, 30 fps): overview cut built by TRELLIS website/video/build_social_media_cut.py: 2x2 highlights and scrolling rows of partial clouds, Stage 1 voxels and meshes (ScanNet++ and Matterport inputs thinned and noised for display), the method on Matterport3D 2t7WUuJeko7 with schematic cube overlays, and a six-method flythrough on ScanNet++ 1b75758486.
+Current online video (58 s, 1920×1080, 30 fps): overview cut built by TRELLIS website/video/build_social_media_cut.py: 2x2 highlights and scrolling rows of partial clouds, Stage 1 voxels and meshes (ScanNet++ and Matterport inputs thinned and noised for display), the method on Matterport3D 2t7WUuJeko7 with schematic cube overlays, and a six-method flythrough on ScanNet++ 1b75758486.
 
 The method video uses video/anchorcomplete-pipeline-example.mp4: the next recorded cube starts when the previous cube is halfway through denoising. During the overlap, the previous occupancy keeps updating while the next cube's occupancy is composited into the same fixed-camera view. Denoising playback is 1.2× faster; saved inference states and geometry are unchanged. Stage 1 takes about 12 seconds, down from about 23 seconds. Cube labels omit window dimensions and sampler step/time values. The current web cut ends on the final Stage-2 mesh before the earlier flythrough footage.
 
